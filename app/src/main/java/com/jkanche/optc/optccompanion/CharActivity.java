@@ -56,6 +56,10 @@ public class CharActivity extends AppCompatActivity implements SearchView.OnQuer
             //Log.d("CharActivity", "onCreate PROCESSING JSON");
 
         mRecyclerView = (RecyclerView) findViewById(R.id.charView);
+
+        //mRecyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL_LIST));
+
+        mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mAdapter = new CharAdapter(this, optcchars);
         mRecyclerView.setAdapter(mAdapter);

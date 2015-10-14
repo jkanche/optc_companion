@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/laoding"
-        android:id="@+id/textView"
+        android:id="@+id/updateTask"
         android:layout_gravity="center_horizontal"
         android:textColor="#ffffff" />
 

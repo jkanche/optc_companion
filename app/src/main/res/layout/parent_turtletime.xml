@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/abc_list_selector_background_transition_holo_light">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/turtleTimeLocation"
+        android:layout_gravity="center_horizontal"
+        android:textStyle="bold"
+        android:textSize="14dp" />
+
+    <ImageButton
+        android:id="@+id/parent_list_item_expand_arrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_margin="8dp"
+        android:src="@android:drawable/arrow_down_float" />
+</LinearLayout>
+-->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="wrap_content">
+<!--android:background="@drawable/abc_list_selector_background_transition_holo_light"-->
+
+<TextView
+    android:id="@+id/turtleTimeLocation"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp"
+    android:textStyle="bold" />
+
+<!--<ImageButton
+    android:id="@+id/parent_list_item_expand_arrow"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentRight="true"
+    android:layout_margin="8dp"
+    android:src="@android:drawable/arrow_down_float" />-->
+
+</RelativeLayout>
