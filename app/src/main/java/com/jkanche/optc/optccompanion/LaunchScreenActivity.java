@@ -150,56 +150,76 @@ public class LaunchScreenActivity extends AppCompatActivity {
                     mProgressBar.setMax(rows.length());
 
                     for(int i = 0; i < rows.length(); i++) {
-                        JSONArray row = rows.getJSONArray(i);
+                        //JSONArray row = rows.getJSONArray(i);
 
-                        String charName = row.getString(0);
-                        String charType = row.getString(1);
-                        String charClass = row.getString(2);
-                        int charStars = row.getInt(3);
-                        int charId = i+1;
-                        int charCost = row.getInt(4);
-                        int charCombo = row.getInt(5);
-                        int charSlots = row.getInt(6);
-                        int charMaxLevel = row.getInt(7);
-                        int charMaxExp = row.getInt(8);
-                        int charHealth = row.getInt(12);
-                        int charAttack = row.getInt(13);
-                        int charRecovery = row.getInt(14);
+                        JSONObject crow = rows.getJSONObject(i);
+
+                        if(!crow.getString("name").toLowerCase().equals("unknown")) {
+
+/*                            String charName = row.getString(0);
+                            String charType = row.getString(1);
+                            String charClass = row.getString(2);
+                            int charStars = row.getInt(3);
+                            int charId = i+1;
+                            int charCost = row.getInt(4);
+                            int charCombo = row.getInt(5);
+                            int charSlots = row.getInt(6);
+                            int charMaxLevel = row.getInt(7);
+                            int charMaxExp = row.getInt(8);
+                            int charHealth = row.getInt(12);
+                            int charAttack = row.getInt(13);
+                            int charRecovery = row.getInt(14);*/
+
+                            String charName = crow.getString("name");
+                            String charType = crow.getString("type");
+                            String charClass = crow.getString("class");
+                            int charStars = crow.getInt("stars");
+                            int charId = i+1;
+                            int charCost = crow.getInt("cost");
+                            int charCombo = crow.getInt("combo");
+                            int charSlots = crow.getInt("slots");
+                            int charMaxLevel = crow.getInt("maxLevel");
+                            int charMaxExp = crow.getInt("maxEXP");
+                            int charHealth = crow.getInt("maxHP");
+                            int charAttack = crow.getInt("maxATK");
+                            int charRecovery = crow.getInt("maxRCV");
 
 
-                        JSONObject drows = new JSONObject(dJSON);
+                            JSONObject drows = new JSONObject(dJSON);
 
-                        String spl = "-";
+                            String spl = "-";
 
-                        if( drows.getJSONObject(Integer.toString(charId)).has("special") ) {
-                            spl = drows.getJSONObject(Integer.toString(charId)).getString("special");
+                            if( drows.getJSONObject(Integer.toString(charId)).has("special") ) {
+                                spl = drows.getJSONObject(Integer.toString(charId)).getString("special");
+                            }
+
+                            String splName = "-";
+
+                            if( drows.getJSONObject(Integer.toString(charId)).has("specialName")) {
+                                splName = drows.getJSONObject(Integer.toString(charId)).getString("specialName");
+                            }
+
+                            String captSpl = "-";
+
+                            if( drows.getJSONObject(Integer.toString(charId)).has("captain")) {
+                                captSpl = drows.getJSONObject(Integer.toString(charId)).getString("captain");
+                            }
+
+                            String cooldown = "-";
+
+                            if( drows.getJSONObject(Integer.toString(charId)).has("cooldown")) {
+                                cooldown = drows.getJSONObject(Integer.toString(charId)).getString("cooldown");
+                            }
+
+                            optcChar tempChar = new optcChar(charId, charName, charType, charClass,
+                                    charHealth, charAttack, charRecovery, charCost, charStars,
+                                    charMaxLevel, charCombo, charMaxExp, spl, splName, captSpl, cooldown, charSlots);
+
+                            optcchars.add(tempChar);
+
+                            mProgressBar.setProgress(i);
+
                         }
-
-                        String splName = "-";
-
-                        if( drows.getJSONObject(Integer.toString(charId)).has("specialName")) {
-                            splName = drows.getJSONObject(Integer.toString(charId)).getString("specialName");
-                        }
-
-                        String captSpl = "-";
-
-                        if( drows.getJSONObject(Integer.toString(charId)).has("captain")) {
-                            captSpl = drows.getJSONObject(Integer.toString(charId)).getString("captain");
-                        }
-
-                        String cooldown = "-";
-
-                        if( drows.getJSONObject(Integer.toString(charId)).has("cooldown")) {
-                            cooldown = drows.getJSONObject(Integer.toString(charId)).getString("cooldown");
-                        }
-
-                        optcChar tempChar = new optcChar(charId, charName, charType, charClass,
-                                charHealth, charAttack, charRecovery, charCost, charStars,
-                                charMaxLevel, charCombo, charMaxExp, spl, splName, captSpl, cooldown, charSlots);
-
-                        optcchars.add(tempChar);
-
-                        mProgressBar.setProgress(i);
                     }
 
                 } catch (JSONException e) {

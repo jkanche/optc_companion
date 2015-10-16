@@ -137,7 +137,7 @@ public class TurtleTimeExpandableAdapter extends ExpandableRecyclerAdapter<Turtl
 
                         if (temp.getDigitID().equals(tlocTime.getDigitID())) {
                             ((TurtleLocationTimes) globalChildList.get(gi)).toggleNotifySwitch();
-                            scheduleNotification(getNotification("TURTLE TIME - GLOBAL"), tlocTime.getDigitID(), tlocTime.getTurtleTime(), !tlocTime.isNotifySwitch(), tlocTime.getLocation());
+                            scheduleNotification(getNotification("TURTLE TIME - GLOBAL - " + tlocTime.getDigitID()), tlocTime.getDigitID(), tlocTime.getTurtleTime(), !tlocTime.isNotifySwitch(), tlocTime.getLocation());
                         }
                     }
 
@@ -156,7 +156,7 @@ public class TurtleTimeExpandableAdapter extends ExpandableRecyclerAdapter<Turtl
 
                         if (temp.getDigitID().equals(tlocTime.getDigitID())) {
                             ((TurtleLocationTimes) japanChildList.get(gi)).toggleNotifySwitch();
-                            scheduleNotification(getNotification("TURTLE TIME - JAPAN"), tlocTime.getDigitID(), tlocTime.getTurtleTime(), !tlocTime.isNotifySwitch(), tlocTime.getLocation());
+                            scheduleNotification(getNotification("TURTLE TIME - JAPAN - " + tlocTime.getDigitID()), tlocTime.getDigitID(), tlocTime.getTurtleTime(), !tlocTime.isNotifySwitch(), tlocTime.getLocation());
                         }
                     }
 
@@ -175,28 +175,24 @@ public class TurtleTimeExpandableAdapter extends ExpandableRecyclerAdapter<Turtl
                 int idTT = 0;
 
                 if (locTT.toLowerCase().equals("japan")) {
-                    idTT = 10;
+                    idTT = 100;
                 }
 
                 if (digitTT.equals("0,5")) {
                     idTT += 0;
                 } else if (digitTT.equals("1,6")) {
-                    idTT += 1;
+                    idTT += 10;
                 } else if (digitTT.equals("2,7")) {
-                    idTT += 2;
+                    idTT += 20;
                 } else if (digitTT.equals("3,8")) {
-                    idTT += 3;
+                    idTT += 30;
                 } else if (digitTT.equals("4,9")) {
-                    idTT += 4;
+                    idTT += 40;
                 }
 
-                Intent notificationIntent = new Intent(act, NotificationPublisher.class);
-                notificationIntent.putExtra(NotificationPublisher.NOTIFICATION_ID, idTT);
-                notificationIntent.putExtra(NotificationPublisher.NOTIFICATION, notification);
-                PendingIntent pendingIntent = PendingIntent.getBroadcast(act, idTT, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-                AlarmManager alarmManager = (AlarmManager) act.getSystemService(Context.ALARM_SERVICE);
-
                 String[] ttimes = tDates.split(",");
+
+                int nTimeNotifier = 0;
 
                 for (String dateTT : ttimes) {
 
@@ -215,6 +211,15 @@ public class TurtleTimeExpandableAdapter extends ExpandableRecyclerAdapter<Turtl
                     calendar.set(Calendar.HOUR_OF_DAY, calTemp.get(Calendar.HOUR_OF_DAY));
                     calendar.set(Calendar.MINUTE, calTemp.get(Calendar.MINUTE));
 
+                    int nidTT = idTT + nTimeNotifier;
+
+                    Intent notificationIntent = new Intent(act, NotificationPublisher.class);
+                    notificationIntent.putExtra(NotificationPublisher.NOTIFICATION_ID, nidTT);
+                    notificationIntent.putExtra(NotificationPublisher.NOTIFICATION, notification);
+                    notificationIntent.putExtra(NotificationPublisher.NOTIFICATION_TAG, ddTT.toString());
+                    PendingIntent pendingIntent = PendingIntent.getBroadcast(act, nidTT, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+                    AlarmManager alarmManager = (AlarmManager) act.getSystemService(Context.ALARM_SERVICE);
+
 
                     //long futureInMillis = dd.getTimeInMillis();
 
@@ -223,6 +228,9 @@ public class TurtleTimeExpandableAdapter extends ExpandableRecyclerAdapter<Turtl
                     } else {
                         alarmManager.cancel(pendingIntent);
                     }
+
+
+                    nTimeNotifier++;
                 }
             }
 

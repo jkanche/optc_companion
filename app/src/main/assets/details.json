@@ -3433,7 +3433,8 @@
       103
     ],
     "flags": {
-      "global": 1
+      "global": 1,
+      "rfonly": 1
     }
   },
   "263": {
@@ -3446,7 +3447,8 @@
       10
     ],
     "flags": {
-      "global": 1
+      "global": 1,
+      "rfonly": 1
     }
   },
   "264": {
@@ -3460,7 +3462,8 @@
       104
     ],
     "flags": {
-      "global": 1
+      "global": 1,
+      "rfonly": 1
     }
   },
   "265": {
@@ -3472,7 +3475,8 @@
       11
     ],
     "flags": {
-      "global": 1
+      "global": 1,
+      "rfonly": 1
     }
   },
   "266": {
@@ -9849,7 +9853,7 @@
     "cooldown": 20
   },
   "730": {
-    "special": "Reduces current HP, deals 2x the amount of HP subtracted in INT damage to all enemies, boosts ATK of INT characters by 1.5x for 1 turn",
+    "special": "Reduces crew's current HP by 99%, deals 2x the amount of HP subtracted in INT damage to all enemies, boosts ATK of INT characters by 1.5x for 1 turn",
     "specialName": "Rankyaku - Lupus Fall",
     "captain": "Boosts ATK and HP of INT characters by 1.2x, deals 9 HP as fixed damage to all enemies at the end of the turn",
     "cooldown": 25,
@@ -9863,7 +9867,7 @@
     ]
   },
   "731": {
-    "special": "Reduces current HP, deals 2x the amount of HP subtracted in INT damage to all enemies, boosts ATK of INT characters by 1.5x for 1 turn",
+    "special": "Reduces crew's current HP by 99%, deals 2x the amount of HP subtracted in INT damage to all enemies, boosts ATK of INT characters by 1.5x for 1 turn",
     "specialName": "Rankyaku - Lupus Fall",
     "captain": "Boosts ATK and HP of INT characters by 1.5x, deals 9 HP as fixed damage to all enemies at the end of the turn",
     "cooldown": 25
@@ -10223,61 +10227,66 @@
   },
   "761": {
     "special": "Deals 15x character's ATK in DEX damage to one enemy, boosts ATK of all characters by 1.2x for 1 turn",
-    "specialName": "Gum-Gum \"Monster\"",
+    "specialName": "Gum-Gum Monster Pistol",
     "captain": "Boosts ATK of Fighter characters by 2x",
     "cooldown": [
       23,
       15
     ],
     "flags": {
+      "global": 1,
       "fnonly": 1
     }
   },
   "762": {
     "special": "Boosts ATK of PSY characters by 1.75x for 1 turn",
-    "specialName": "Impact \"Beast\"",
+    "specialName": "Impact Beast",
     "captain": "Boosts ATK and RCV of PSY characters by 1.5x",
     "cooldown": [
       14,
       10
     ],
     "flags": {
+      "global": 1,
       "fnonly": 1
     }
   },
   "763": {
     "special": "Changes own orb into [STR], freely switch orbs between slots once",
-    "specialName": "Convert: Franky Centaur",
+    "specialName": "Franken-Franky Centaur",
     "captain": "Boosts ATK of STR characters by 2x",
     "cooldown": [
       15,
       7
     ],
     "flags": {
+      "global": 1,
       "fnonly": 1
     }
   },
   "764": {
     "special": "Recovers 3,000 HP",
-    "specialName": "Cat Burglar \"Trick\"",
+    "specialName": "Cat Burglar Trick",
     "captain": "Boosts ATK and RCV of Striker characters by 1.5x",
     "cooldown": [
       16,
       8
     ],
     "flags": {
+      "global": 1,
       "fnonly": 1
     }
   },
   "765": {
     "special": "Reduces Silence duration by 3 turns",
-    "specialName": "Scope \"Magic\"",
+    "specialName": "Scope Magic",
     "captain": "Recovers 2x character's RCV in HP at the end of the turn",
     "cooldown": [
       17,
       9
     ],
     "flags": {
+      "global": 1,
       "fnonly": 1
     }
   },
@@ -10354,5 +10363,81 @@
     "flags": {
       "raid": 1
     }
+  },
+  "776": {
+    "specialName": "Boisterous Lucky Shot!!",
+    "special": "Recovers 5,000 HP, deals 15x character's ATK in PSY damage to one enemy, seals himself for 3 turns",
+    "captain": "Boosts ATK and RCV of PSY characters by 1.25x",
+    "cooldown": 20,
+    "evolution": 777,
+    "evolvers": [
+      116,
+      117,
+      81,
+      87,
+      103
+    ]
+  },
+  "777": {
+    "special": "Recovers 5,000 HP, deals 15x character's ATK in PSY damage to one enemy, seals himself for 3 turns",
+    "specialName": "Boisterous Lucky Shot!!",
+    "captain": "Boosts ATK and RCV of PSY characters by 1.75x",
+    "cooldown": 20
+  },
+  "778": {
+    "special": "Deals several times the character's ATK in QCK damage to one enemy, changes own orb into [QCK]",
+    "specialNotes": "The exact multiplier used to compute the damage is proportional to the crew's remaining HP and is higher the lower the HP is. The multiplier is calculated as: 125 * ( 1 - (remaining HP) / (total HP) )",
+    "specialName": "Undefeated Sword Technique",
+    "captain": "Reduces damage received by 20%",
+    "cooldown": [
+      26,
+      16
+    ],
+    "evolution": 779,
+    "evolvers": [
+      117,
+      85,
+      94,
+      96,
+      301
+    ]
+  },
+  "779": {
+    "special": "Deals several times the character's ATK in QCK damage to one enemy, changes own orb into [QCK]",
+    "specialNotes": "The exact multiplier used to compute the damage is proportional to the crew's remaining HP and is higher the lower the HP is. The multiplier is calculated as: 125 * ( 1 - (remaining HP) / (total HP) )",
+    "specialName": "Undefeated Sword Technique",
+    "captain": "Reduces damage received by 25%",
+    "cooldown": [
+      26,
+      16
+    ]
+  },
+  "780": {
+    "special": "Boosts his own ATK by a variable factor for 1 turn",
+    "specialNotes": "The exact multiplier used is chosen based on the crew's current HP at the time the special is activated: above 50% HP, the multiplier used is 1.5x; between 20% HP and 50% HP, it's 1.75x; below 20% HP, it's 2x.",
+    "specialName": "Precept Deification",
+    "captain": "Boosts ATK of all characters by 2x if HP is below 30% at the start of the turn",
+    "cooldown": [
+      19,
+      7
+    ],
+    "evolution": 781,
+    "evolvers": [
+      118,
+      84,
+      94,
+      300,
+      100
+    ]
+  },
+  "781": {
+    "special": "Boosts his own ATK by a variable factor for 1 turn",
+    "specialNotes": "The exact multiplier used is chosen based on the crew's current HP at the time the special is activated: above 50% HP, the multiplier used is 1.5x; between 20% HP and 50% HP, it's 1.75x; below 20% HP, it's 2x.",
+    "specialName": "Precept Deification",
+    "captain": "Boosts ATK of all characters by 2.5x if HP is below 30% at the start of the turn",
+    "cooldown": [
+      19,
+      7
+    ]
   }
 }
