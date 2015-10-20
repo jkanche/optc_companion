@@ -15,16 +15,6 @@
     android:gravity="center"
     android:background="#c2160f0f">
 
-    <com.google.android.gms.ads.AdView
-        android:id="@+id/adView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        ads:adSize="BANNER"
-        ads:adUnitId="@string/banner_ad_unit_id">
-    </com.google.android.gms.ads.AdView>
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -32,7 +22,15 @@
         android:text="@string/laoding"
         android:id="@+id/updateTask"
         android:layout_gravity="center_horizontal"
-        android:textColor="#ffffff" />
+        android:textColor="#ffffff"
+        android:textSize="14dp" />
+
+<!--    <com.daimajia.numberprogressbar.NumberProgressBar
+        android:layout_width="wrap_content"
+        android:id="@+id/progressBar"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp" />-->
 
     <ProgressBar
         style="?android:attr/progressBarStyleHorizontal"
@@ -42,4 +40,14 @@
         android:indeterminate="false"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp" />
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/banner_ad_unit_id">
+    </com.google.android.gms.ads.AdView>
 </LinearLayout>

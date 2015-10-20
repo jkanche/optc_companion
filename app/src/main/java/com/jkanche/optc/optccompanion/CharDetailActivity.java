@@ -1,28 +1,42 @@
 package com.jkanche.optc.optccompanion;
 
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.RatingBar;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.squareup.picasso.Picasso;
+import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
 
 import java.io.InputStream;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 public class CharDetailActivity extends AppCompatActivity {
 
     private Tracker mTracker;
+    public ArrayList<optcChar> optcchars = new ArrayList<optcChar>();
+    public ArrayList<optcCharEvol> optcevols = new ArrayList<optcCharEvol>();
     optcChar optcCharsSelc;
+    ArrayList<optcCharEvol> optcEvolsSel;
+    private RecyclerView mRecyclerView;
+    private CharEvolAdapter mAdapter;
+    public static final String PREFS_NAME = "optcChars";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,10 +45,13 @@ public class CharDetailActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        //getSupportActionBar().setHomeButtonEnabled(true);
+
         OPTCCompanion application = (OPTCCompanion) getApplication();
         mTracker = application.getDefaultTracker();
 
         optcCharsSelc = (optcChar) getIntent().getExtras().getSerializable("optcCharSelc");
+        optcEvolsSel = (ArrayList<optcCharEvol>) getIntent().getExtras().getSerializable("optcEvolsSel");
 
         int charId = optcCharsSelc.getCharId();
         String charName = optcCharsSelc.getCharName();
@@ -79,6 +96,10 @@ public class CharDetailActivity extends AppCompatActivity {
 
         TextView tcharName = (TextView) findViewById(R.id.charName);
         tcharName.setText(charName);
+
+        //getActionBar().setTitle(charName);
+
+        setTitle(charName);
 
         TextView tcharType = (TextView) findViewById(R.id.charType);
         tcharType.setText(charType);
@@ -141,32 +162,67 @@ public class CharDetailActivity extends AppCompatActivity {
             Picasso.with(this).load("http://onepiece-treasurecruise.com/wp-content/uploads/c" + ccid + ".png").into(charPImg);
             //new DownloadImageTask( charPImg).execute("http://onepiece-treasurecruise.com/wp-content/uploads/c" + ccid + ".png");
         }
-    }
 
-    private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
-        ImageView bmImage;
+        if(optcEvolsSel.size() > 0) {
 
-        public DownloadImageTask(ImageView bmImage) {
-            this.bmImage = bmImage;
+            Gson gson = new Gson();
+
+            SharedPreferences optcSP = getSharedPreferences(PREFS_NAME, 0);
+            String optcCharObj = optcSP.getString("chars", null);
+            String optcEvolObj = optcSP.getString("evols", null);
+
+            Type collectionTypeChar = new TypeToken<ArrayList<optcChar>>(){}.getType();
+            Type collectionTypeEvol = new TypeToken<ArrayList<optcCharEvol>>(){}.getType();
+
+            optcchars = gson.fromJson(optcCharObj, collectionTypeChar);
+            optcevols = gson.fromJson(optcEvolObj, collectionTypeEvol);
+
+            mRecyclerView = (RecyclerView) findViewById(R.id.evolView);
+
+            mRecyclerView.addItemDecoration(new HorizontalDividerItemDecoration.Builder(this).build());
+
+            mRecyclerView.setHasFixedSize(true);
+            mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+            mAdapter = new CharEvolAdapter(this, optcchars, optcevols, optcEvolsSel);
+            mRecyclerView.setAdapter(mAdapter);
+
+            mRecyclerView.setHasFixedSize(true);
+        }
+        else {
+            TextView evolText = (TextView) findViewById(R.id.evolutionTitleText);
+            evolText.setText("Final Evolution");
         }
 
-        protected Bitmap doInBackground(String... urls) {
-            String urldisplay = urls[0];
-            Bitmap mIcon11 = null;
-            try {
-                InputStream in = new java.net.URL(urldisplay).openStream();
-                mIcon11 = BitmapFactory.decodeStream(in);
-            } catch (Exception e) {
-                Log.e("Error", e.getMessage());
-                e.printStackTrace();
+        final ScrollView scrollDetail = (ScrollView) findViewById(R.id.scrollDetail);
+
+        scrollDetail.post(new Runnable() {
+            @Override
+            public void run() {
+                scrollDetail.fullScroll(ScrollView.FOCUS_UP);
             }
-            return mIcon11;
-        }
+        });
 
-        protected void onPostExecute(Bitmap result) {
-            bmImage.setImageBitmap(result);
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        //getMenuInflater().inflate(R.menu.menu_char_detail, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
+
 
 /*    @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -32,6 +32,8 @@ import org.json.JSONObject;
 
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class CharAdapter extends RecyclerView.Adapter <CharAdapter.CharViewHolder> {
@@ -44,7 +46,7 @@ public class CharAdapter extends RecyclerView.Adapter <CharAdapter.CharViewHolde
         {
 
        // public CardView cv;
-        public TextView charName, charClass, charHealth, charAttack, charRecovery;
+        public TextView charName, charClass, charHealth, charAttack, charRecovery, charCost, charID;
         public ImageView charSImg, charType;
         public RatingBar charStars;
 
@@ -61,6 +63,8 @@ public class CharAdapter extends RecyclerView.Adapter <CharAdapter.CharViewHolde
             charRecovery = (TextView)itemView.findViewById(R.id.charRecovery);
             charStars = (RatingBar)itemView.findViewById(R.id.charStars);
             charSImg = (ImageView)itemView.findViewById(R.id.charProfile);
+            charCost = (TextView)itemView.findViewById(R.id.charCost);
+            charID = (TextView)itemView.findViewById(R.id.charID);
 
             //itemView.setOnClickListener(this);
             //itemView.setOnLongClickListener(this);
@@ -75,7 +79,18 @@ public class CharAdapter extends RecyclerView.Adapter <CharAdapter.CharViewHolde
 
                     optcChar temp = optcchars_filtered.get(getPosition());
 
+                    //optcevols_filtered.clear();
+
+                    optcevols_filtered = new ArrayList<optcCharEvol>();
+
+                    for (optcCharEvol tmp: optcevols) {
+                        if(tmp.getParentCharID() == temp.getCharId()) {
+                            optcevols_filtered.add(tmp);
+                        }
+                    }
+
                     intent.putExtra("optcCharSelc",temp);
+                    intent.putExtra("optcEvolsSel", optcevols_filtered);
 
 /*                    int charId = temp.getCharId();
                     String charName = temp.getCharName();
@@ -175,12 +190,16 @@ public class CharAdapter extends RecyclerView.Adapter <CharAdapter.CharViewHolde
 
     ArrayList<optcChar> optcchars;
     ArrayList<optcChar> optcchars_filtered;
+    ArrayList<optcCharEvol> optcevols;
+    ArrayList<optcCharEvol> optcevols_filtered;
     private final LayoutInflater mInflater;
 
-    public CharAdapter(Context context, ArrayList<optcChar> optcchars) {
+    public CharAdapter(Context context, ArrayList<optcChar> optcchars, ArrayList<optcCharEvol> optcevols) {
         this.mInflater = LayoutInflater.from(context);
         this.optcchars = optcchars;
         this.optcchars_filtered = optcchars;
+        this.optcevols = optcevols;
+        this.optcevols_filtered = optcevols;
     }
 
     @Override
@@ -211,10 +230,13 @@ public class CharAdapter extends RecyclerView.Adapter <CharAdapter.CharViewHolde
 
         cvh.charHealth.setText("Health: " + Integer.toString(optcchars_filtered.get(i).getCharHealth()));
         cvh.charAttack.setText("Attack: " + Integer.toString(optcchars_filtered.get(i).getCharAttack()));
-        cvh.charRecovery.setText("Recovery: " + Integer.toString(optcchars_filtered.get(i).getcharRecovery()));
+        cvh.charRecovery.setText("Recovery: " + Integer.toString(optcchars_filtered.get(i).getCharRecovery()));
+        cvh.charCost.setText("Cost: " + Integer.toString(optcchars_filtered.get(i).getCharCost()));
         cvh.charStars.setRating(optcchars_filtered.get(i).getCharStars());
 
         int charId = optcchars_filtered.get(i).getCharId();
+
+        cvh.charID.setText(Integer.toString(charId));
 
         if (charId == 0) {
             //new DownloadImageTask( cvh.charSImg).execute("http://onepiece-treasurecruise.com/wp-content/themes/onepiece-treasurecruise/images/noimage.png");
@@ -306,7 +328,7 @@ public class CharAdapter extends RecyclerView.Adapter <CharAdapter.CharViewHolde
         }
     }*/
 
-    private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
+/*    private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
         ImageView bmImage;
 
         public DownloadImageTask(ImageView bmImage) {
@@ -329,17 +351,19 @@ public class CharAdapter extends RecyclerView.Adapter <CharAdapter.CharViewHolde
         protected void onPostExecute(Bitmap result) {
             bmImage.setImageBitmap(result);
         }
-    }
+    }*/
 
     @Override
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
     }
 
-    public void flushFilter(){
+    public void flushFilter(boolean notify){
         optcchars_filtered=new ArrayList<>();
         optcchars_filtered.addAll(optcchars);
-        notifyDataSetChanged();
+        if(notify) {
+            notifyDataSetChanged();
+        }
     }
 
     public void setFilter(String queryText) {
@@ -348,6 +372,67 @@ public class CharAdapter extends RecyclerView.Adapter <CharAdapter.CharViewHolde
         String query = queryText.toString().toLowerCase();
         for (optcChar item: optcchars) {
             if (item.getCharName().toLowerCase().contains(query))
+                optcchars_filtered.add(item);
+        }
+        notifyDataSetChanged();
+    }
+
+    public void reverseFilter() {
+        Collections.reverse(optcchars_filtered);
+        notifyDataSetChanged();
+    }
+
+    public void setHealthFilter() {
+        //Sorting
+        Collections.sort(optcchars_filtered, optcChar.Comparators.HEALTH);
+
+        notifyDataSetChanged();
+    }
+
+    public void setIDFilter() {
+        //Sorting
+        Collections.sort(optcchars_filtered, optcChar.Comparators.CHARID);
+
+        notifyDataSetChanged();
+    }
+
+    public void setAttackFilter() {
+        //Sorting
+        Collections.sort(optcchars_filtered, optcChar.Comparators.ATTACK);
+
+        notifyDataSetChanged();
+    }
+
+    public void setCostFilter() {
+        //Sorting
+        Collections.sort(optcchars_filtered, optcChar.Comparators.COST);
+
+        notifyDataSetChanged();
+    }
+
+    public void setRcvFilter() {
+        //Sorting
+        Collections.sort(optcchars_filtered, optcChar.Comparators.RECOVERY);
+
+        notifyDataSetChanged();
+    }
+
+    public void setComplexFilter(String classFilter, String typeFilter, int minHealth, int maxHealth,
+                                 int minAtk, int maxAtk, int minRcv, int maxRcv, int minCost, int maxCost) {
+
+        optcchars_filtered = new ArrayList<>();
+
+        String classFilt = classFilter.toLowerCase();
+        String classType = typeFilter.toLowerCase();
+
+        for (optcChar item: optcchars) {
+            if ((item.getCharClass().toLowerCase().contains(classFilt) || classFilt.contains(item.getCharClass().toLowerCase()))
+                    && (item.getCharType().toLowerCase().contains(classType) || classType.contains(item.getCharType().toLowerCase()))
+                    && (item.getCharHealth() > minHealth && item.getCharHealth() < maxHealth)
+                    && (item.getCharAttack() > minAtk && item.getCharAttack() < maxAtk)
+                    && (item.getCharRecovery() > minRcv && item.getCharRecovery() < maxRcv)
+                    && (item.getCharCost() > minCost && item.getCharCost() < maxCost)
+                    )
                 optcchars_filtered.add(item);
         }
         notifyDataSetChanged();

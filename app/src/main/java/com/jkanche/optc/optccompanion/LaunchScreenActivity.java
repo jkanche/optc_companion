@@ -4,6 +4,7 @@ package com.jkanche.optc.optccompanion;
  * Created by jayar on 10/12/2015.
  */
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -37,16 +38,28 @@ public class LaunchScreenActivity extends AppCompatActivity {
     private static final int SPLASH_TIME = 3000;
 
     public ArrayList<optcChar> optcchars = new ArrayList<optcChar>();
+    public ArrayList<optcCharEvol> optcevols = new ArrayList<optcCharEvol>();
     private ProgressBar mProgressBar;
+    public Context mContext;
     public static final String PREFS_NAME = "optcChars";
+    public static final String PREFS_EVOL = "optcEvols";
     public TextView updateTask;
     String response;
+    String forceDataReload;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.splash);
+
+        forceDataReload = getIntent().getStringExtra("forceReload");
+
+        if(forceDataReload == null) {
+            forceDataReload = "false";
+        }
+
+        mContext = this;
 
         mProgressBar = (ProgressBar) findViewById (R.id.progressBar);
 
@@ -110,9 +123,9 @@ public class LaunchScreenActivity extends AppCompatActivity {
         protected void onPreExecute() {
             super.onPreExecute();
 
-            updateTask.setText("Updating Characters...");
+            updateTask.setText("Updating Characters and Evolutions...");
 
-            intent = new Intent(LaunchScreenActivity.this, HomeScreenActivity.class);
+            intent = new Intent(mContext, HomeScreenActivity.class);
         }
 
         @Override
@@ -125,13 +138,19 @@ public class LaunchScreenActivity extends AppCompatActivity {
 
             SharedPreferences optcSP = getSharedPreferences(PREFS_NAME, 0);
             String dataSP = optcSP.getString("chars", null);
-            Type collectionType = new TypeToken<ArrayList<optcChar>>(){}.getType();
 
-            if(dataSP == null) {
+            //SharedPreferences optcEP = getSharedPreferences(PREFS_EVOL, 0);
+            String dataEP = optcSP.getString("evols", null);
+
+            Type collectionTypeChar = new TypeToken<ArrayList<optcChar>>(){}.getType();
+            Type collectionTypeEvol = new TypeToken<ArrayList<optcCharEvol>>(){}.getType();
+
+            if(dataSP == null || dataEP == null || forceDataReload.equals("true")) {
                 processJson();
             }
             else {
-                optcchars = gson.fromJson(dataSP, collectionType);
+                optcchars = gson.fromJson(dataSP, collectionTypeChar);
+                optcevols = gson.fromJson(dataEP, collectionTypeEvol);
             }
 
             return null;
@@ -148,6 +167,10 @@ public class LaunchScreenActivity extends AppCompatActivity {
                     JSONArray rows = new JSONArray(fJSON);
 
                     mProgressBar.setMax(rows.length());
+
+                    //mProgressBar.setMax(rows.length());
+
+                    JSONObject drows = new JSONObject(dJSON);
 
                     for(int i = 0; i < rows.length(); i++) {
                         //JSONArray row = rows.getJSONArray(i);
@@ -183,42 +206,77 @@ public class LaunchScreenActivity extends AppCompatActivity {
                             int charHealth = crow.getInt("maxHP");
                             int charAttack = crow.getInt("maxATK");
                             int charRecovery = crow.getInt("maxRCV");
+                            boolean charBaseForm = false;
 
 
-                            JSONObject drows = new JSONObject(dJSON);
 
-                            String spl = "-";
 
-                            if( drows.getJSONObject(Integer.toString(charId)).has("special") ) {
-                                spl = drows.getJSONObject(Integer.toString(charId)).getString("special");
+                            if(drows.has(Integer.toString(charId))) {
+
+                                JSONObject drowRec = drows.getJSONObject(Integer.toString(charId));
+
+                                String spl = "-";
+
+                                if( drowRec.has("special") ) {
+                                    spl = drowRec.getString("special");
+                                }
+
+                                String splName = "-";
+
+                                if( drowRec.has("specialName")) {
+                                    splName = drowRec.getString("specialName");
+                                }
+
+                                String captSpl = "-";
+
+                                if( drowRec.has("captain")) {
+                                    captSpl = drowRec.getString("captain");
+                                }
+
+                                String cooldown = "-";
+
+                                if( drowRec.has("cooldown")) {
+                                    cooldown = drowRec.getString("cooldown");
+                                }
+
+                                if(drowRec.has("evolution")) {
+                                    if(drowRec.get("evolution") instanceof JSONArray) {
+
+                                        JSONArray drowEvols = drowRec.getJSONArray("evolution");
+
+                                        for (int dre=0; dre < drowEvols.length(); dre++) {
+
+                                            int childEvol = drowEvols.getInt(dre);
+                                            String evolChar = drowRec.getJSONArray("evolvers").getString(dre);
+
+                                            optcCharEvol tmpEvol = new optcCharEvol(charId, childEvol, evolChar);
+                                            optcevols.add(tmpEvol);
+                                        }
+
+                                    }
+                                    else /*if(drowRec.get("evolution") instanceof int)*/ {
+
+                                        int childEvol = drowRec.getInt("evolution");
+                                        String evolChar = drowRec.getString("evolvers");
+
+                                        optcCharEvol tmpEvol = new optcCharEvol(charId, childEvol, evolChar);
+                                        optcevols.add(tmpEvol);
+                                    }
+
+                                }
+                                else {
+                                    charBaseForm = true;
+                                }
+
+                                optcChar tempChar = new optcChar(charId, charName, charType, charClass,
+                                        charHealth, charAttack, charRecovery, charCost, charStars,
+                                        charMaxLevel, charCombo, charMaxExp, spl, splName, captSpl, cooldown, charSlots);
+
+                                optcchars.add(tempChar);
+
                             }
-
-                            String splName = "-";
-
-                            if( drows.getJSONObject(Integer.toString(charId)).has("specialName")) {
-                                splName = drows.getJSONObject(Integer.toString(charId)).getString("specialName");
-                            }
-
-                            String captSpl = "-";
-
-                            if( drows.getJSONObject(Integer.toString(charId)).has("captain")) {
-                                captSpl = drows.getJSONObject(Integer.toString(charId)).getString("captain");
-                            }
-
-                            String cooldown = "-";
-
-                            if( drows.getJSONObject(Integer.toString(charId)).has("cooldown")) {
-                                cooldown = drows.getJSONObject(Integer.toString(charId)).getString("cooldown");
-                            }
-
-                            optcChar tempChar = new optcChar(charId, charName, charType, charClass,
-                                    charHealth, charAttack, charRecovery, charCost, charStars,
-                                    charMaxLevel, charCombo, charMaxExp, spl, splName, captSpl, cooldown, charSlots);
-
-                            optcchars.add(tempChar);
 
                             mProgressBar.setProgress(i);
-
                         }
                     }
 
@@ -262,11 +320,27 @@ public class LaunchScreenActivity extends AppCompatActivity {
             SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
             SharedPreferences.Editor editor = settings.edit();
             editor.putString("chars", jdata);
-            editor.commit();
+            //editor.apply();
+
+            String edata = gson.toJson(optcevols);
+/*            SharedPreferences settings2 = getSharedPreferences(PREFS_EVOL, 0);
+            SharedPreferences.Editor editor2 = settings2.edit();*/
+            editor.putString("evols", edata);
+
+            editor.apply();
 
             //String jresp = gson.toJson(response);
 
-            intent.putExtra("optcCharObj", optcchars);
+/*            Bundle b = new Bundle();
+            b.putSerializable("optcCharObj", optcchars);
+            b.putSerializable("optcEvolObj", optcevols);
+
+            intent.putExtras(b);*/
+
+            //intent.putExtra("optcCharObj", optcchars);
+            //intent.putExtra("ObjoptcEvolObj", optcevols);
+            //intent.putExtra("optcCharObj", jdata);
+            //intent.putExtra("optcEvolObj", edata);
             intent.putExtra("turtleTimeResp", response);
 
             startActivity(intent);

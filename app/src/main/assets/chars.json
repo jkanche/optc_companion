@@ -19002,13 +19002,13 @@
     "minHP": 1512,
     "minATK": 755,
     "minRCV": 83,
-    "maxHP": 0,
-    "maxATK": 0,
-    "maxRCV": 0,
+    "maxHP": 2824,
+    "maxATK": 1324,
+    "maxRCV": 203,
     "growth": {
-      "hp": 0,
-      "atk": 0,
-      "rcv": 0
+      "hp": 1.5,
+      "atk": 1.5,
+      "rcv": 1.5
     },
     "number": 780
   }

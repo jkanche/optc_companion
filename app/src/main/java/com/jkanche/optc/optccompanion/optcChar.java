@@ -1,6 +1,7 @@
 package com.jkanche.optc.optccompanion;
 
 import java.io.Serializable;
+import java.util.Comparator;
 
 /**
  * Created by jayar on 10/10/2015.
@@ -48,14 +49,6 @@ public class optcChar implements Serializable {
         this.charAttack = charAttack;
     }
 
-    public int getcharRecovery() {
-        return charRecovery;
-    }
-
-    public void setcharRecovery(int charRecovery) {
-        this.charRecovery = charRecovery;
-    }
-
     public int getCharCost() {
         return charCost;
     }
@@ -96,9 +89,7 @@ public class optcChar implements Serializable {
         this.charMaxExp = charMaxExp;
     }
 
-    private int charId;
-    private String charName;
-    private String charType;
+
 
     public optcChar(int charId, String charName, String charType, String charClass, int charHealth,
                     int charAttack, int charRecovery, int charCost, int charStars, int charMaxLevel,
@@ -141,13 +132,26 @@ public class optcChar implements Serializable {
         this.charSlots = charSlots;
     }
 
+    private int charId;
+    private String charName;
+    private String charType;
     private int charHealth;
     private int charAttack;
+
+    public boolean isCharBaseForm() {
+        return charBaseForm;
+    }
+
+    public void setCharBaseForm(boolean charBaseForm) {
+        this.charBaseForm = charBaseForm;
+    }
+
     private int charRecovery;
     private int charCost;
     private int charStars, charSlots;
     private int charMaxLevel;
     private int charCombo;
+    private boolean charBaseForm;
 
     public int getCharRecovery() {
         return charRecovery;
@@ -193,6 +197,40 @@ public class optcChar implements Serializable {
     private int charMaxExp;
 
     private String charSpecial, charSpecialName, captainSpl, charCooldown;
+
+    public static class Comparators {
+
+        public static Comparator<optcChar> HEALTH = new Comparator<optcChar>() {
+            @Override
+            public int compare(optcChar o1, optcChar o2) {
+                return o1.getCharHealth() - o2.getCharHealth();
+            }
+        };
+        public static Comparator<optcChar> ATTACK = new Comparator<optcChar>() {
+            @Override
+            public int compare(optcChar o1, optcChar o2) {
+                return o1.getCharAttack() - o2.getCharAttack();
+            }
+        };
+        public static Comparator<optcChar> RECOVERY = new Comparator<optcChar>() {
+            @Override
+            public int compare(optcChar o1, optcChar o2) {
+                return o1.getCharRecovery() - o2.getCharRecovery();
+            }
+        };
+        public static Comparator<optcChar> COST = new Comparator<optcChar>() {
+            @Override
+            public int compare(optcChar o1, optcChar o2) {
+                return o1.getCharCost()- o2.getCharCost();
+            }
+        };
+        public static Comparator<optcChar> CHARID = new Comparator<optcChar>() {
+            @Override
+            public int compare(optcChar o1, optcChar o2) {
+                return o1.getCharId()- o2.getCharId();
+            }
+        };
+    }
 
 
 }

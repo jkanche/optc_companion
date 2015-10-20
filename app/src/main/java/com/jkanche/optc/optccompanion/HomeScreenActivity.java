@@ -29,7 +29,9 @@ import java.util.ArrayList;
 public class HomeScreenActivity extends AppCompatActivity {
 
     public ArrayList<optcChar> optcchars = new ArrayList<optcChar>();
+    public ArrayList<optcCharEvol> optcevols = new ArrayList<optcCharEvol>();
     public String respo;
+    public static final String PREFS_NAME = "optcChars";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,11 +40,32 @@ public class HomeScreenActivity extends AppCompatActivity {
         setContentView(R.layout.homescreen);
 
         Intent intent = getIntent();
-        optcchars = (ArrayList<optcChar>) intent.getExtras().getSerializable("optcCharObj");
+
+        //Gson gson = new Gson();
+
+        //Bundle extras = intent.getExtras();
+
+        //optcchars = (ArrayList<optcChar>) extras.getSerializable("optcCharObj");
+        //optcevols = (ArrayList<optcCharEvol>) extras.getSerializable("optcEvolObj");
+
+        //String optcCharObj = (String) intent.getExtras().getSerializable("optcCharObj");
+        //String optcEvolObj = (String) intent.getExtras().getSerializable("optcEvolObj");
+
+/*        SharedPreferences optcSP = getSharedPreferences(PREFS_NAME, 0);
+        String optcCharObj = optcSP.getString("chars", null);
+        String optcEvolObj = optcSP.getString("evols", null);
+
+        Type collectionTypeChar = new TypeToken<ArrayList<optcChar>>(){}.getType();
+        Type collectionTypeEvol = new TypeToken<ArrayList<optcCharEvol>>(){}.getType();
+
+        optcchars = gson.fromJson(optcCharObj, collectionTypeChar);
+        optcevols = gson.fromJson(optcEvolObj, collectionTypeEvol);*/
+
         respo = intent.getExtras().getString("turtleTimeResp");
 
         Button turtleTime = (Button) findViewById (R.id.turtletimeButton);
         Button charSearch = (Button) findViewById (R.id.charSearchButton);
+        Button reloadData = (Button) findViewById (R.id.resetButton);
 
         turtleTime.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,15 +80,23 @@ public class HomeScreenActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intentCS = new Intent(HomeScreenActivity.this, CharActivity.class);
-                intentCS.putExtra("optcCharObj", optcchars);
+                //intentCS.putExtra("optcCharObj", optcchars);
                 startActivity(intentCS);
             }
         });
 
+        reloadData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentRD = new Intent(HomeScreenActivity.this, LaunchScreenActivity.class);
+                intentRD.putExtra("forceReload", "true");
+                startActivity(intentRD);
+            }
+        });
 
         AdView mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
-        //mAdView.loadAd(adRequest);
+        mAdView.loadAd(adRequest);
 
 
     }

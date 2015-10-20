@@ -1,5 +1,11 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:id="@+id/scrollDetail">
+
+<LinearLayout  android:layout_width="match_parent"
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
@@ -24,7 +30,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="false"
         android:textSize="16dp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_gravity="center" />
 
     <RatingBar
         android:layout_width="wrap_content"
@@ -33,10 +40,9 @@
         style="@android:style/Widget.DeviceDefault.RatingBar.Small"
         android:numStars="6"
         android:layout_centerVertical="true"
-        android:layout_marginRight="44dp"
-        android:layout_marginEnd="44dp"
         android:layout_below="@+id/charName"
-        android:layout_alignParentStart="false" />
+        android:layout_alignParentStart="false"
+        android:layout_gravity="center" />
 
     <TableLayout
         android:layout_width="match_parent"
@@ -182,4 +188,27 @@
         android:textSize="13dp"
         android:layout_marginLeft="15dp" />
 
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Evolutions"
+            android:id="@+id/evolutionTitleText"
+            android:textStyle="bold|italic"
+            android:textSize="16dp"
+            android:textColor="#b36161" />
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:id="@+id/evolView" />
+
 </LinearLayout>
+</ScrollView>

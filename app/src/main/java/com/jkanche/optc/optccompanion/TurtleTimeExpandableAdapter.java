@@ -61,21 +61,23 @@ public class TurtleTimeExpandableAdapter extends ExpandableRecyclerAdapter<Turtl
         turtleTimeParentViewHolder.turtleLocation.setText(tloc.getTurtleLocation());
     }
 
-    private Date getDate(String dateString) {
+    private Date getTurtleDate(String dateString) {
         SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy HH:mm z");
         //formatter.setTimeZone(TimeZone.getTimeZone("EDT"));
         Date value = null;
         try {
             value = formatter.parse(dateString);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        SimpleDateFormat dateFormatter = new SimpleDateFormat("MM/dd/yyyy HH:mm");
-        dateFormatter.setTimeZone(TimeZone.getDefault());
-        String dt = dateFormatter.format(value);
 
-        try {
-            value = dateFormatter.parse(dt);
+            SimpleDateFormat dateFormatter = new SimpleDateFormat("MM/dd/yyyy HH:mm");
+            dateFormatter.setTimeZone(TimeZone.getDefault());
+            String dt = dateFormatter.format(value);
+
+            try {
+                value = dateFormatter.parse(dt);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -100,15 +102,17 @@ public class TurtleTimeExpandableAdapter extends ExpandableRecyclerAdapter<Turtl
                 dateFinal += ",\n";
             }
 
-            Date dd = getDate(dateTT);
+            Date dd = getTurtleDate(dateTT);
 
-            String dateOut;
-            DateFormat formatter = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT);
-            dateOut = formatter.format(dd);
+            if( dd!= null) {
+                String dateOut;
+                DateFormat formatter = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT);
+                dateOut = formatter.format(dd);
 
-            dateFinal += dateOut;
+                dateFinal += dateOut;
 
-            di++;
+                di++;
+            }
         }
 
 
@@ -196,59 +200,64 @@ public class TurtleTimeExpandableAdapter extends ExpandableRecyclerAdapter<Turtl
 
                 for (String dateTT : ttimes) {
 
-                    Date ddTT = getDate(dateTT);
+                    Date ddTT = getTurtleDate(dateTT);
 
-                    Calendar calTemp = Calendar.getInstance();
+                    if(ddTT != null) {
 
-                    calTemp.setTime(ddTT);
+                        Calendar calTemp = Calendar.getInstance();
 
-                    Calendar calendar = Calendar.getInstance();
-                    calendar.setTimeInMillis(System.currentTimeMillis());
-                    //calendar.set(ddTT);
-                    calendar.set(Calendar.MONTH, calTemp.get(Calendar.MONTH));
-                    calendar.set(Calendar.YEAR, calTemp.get(Calendar.YEAR));
-                    calendar.set(Calendar.DATE, calTemp.get(Calendar.DATE));
-                    calendar.set(Calendar.HOUR_OF_DAY, calTemp.get(Calendar.HOUR_OF_DAY));
-                    calendar.set(Calendar.MINUTE, calTemp.get(Calendar.MINUTE));
+                        calTemp.setTime(ddTT);
 
-                    int nidTT = idTT + nTimeNotifier;
+                        Calendar calendar = Calendar.getInstance();
+                        calendar.setTimeInMillis(System.currentTimeMillis());
+                        //calendar.set(ddTT);
+                        calendar.set(Calendar.MONTH, calTemp.get(Calendar.MONTH));
+                        calendar.set(Calendar.YEAR, calTemp.get(Calendar.YEAR));
+                        calendar.set(Calendar.DATE, calTemp.get(Calendar.DATE));
+                        calendar.set(Calendar.HOUR_OF_DAY, calTemp.get(Calendar.HOUR_OF_DAY));
+                        calendar.set(Calendar.MINUTE, calTemp.get(Calendar.MINUTE));
 
-                    Intent notificationIntent = new Intent(act, NotificationPublisher.class);
-                    notificationIntent.putExtra(NotificationPublisher.NOTIFICATION_ID, nidTT);
-                    notificationIntent.putExtra(NotificationPublisher.NOTIFICATION, notification);
-                    notificationIntent.putExtra(NotificationPublisher.NOTIFICATION_TAG, ddTT.toString());
-                    PendingIntent pendingIntent = PendingIntent.getBroadcast(act, nidTT, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-                    AlarmManager alarmManager = (AlarmManager) act.getSystemService(Context.ALARM_SERVICE);
+                        int nidTT = idTT + nTimeNotifier;
+
+                        Intent notificationIntent = new Intent(act, NotificationPublisher.class);
+                        notificationIntent.putExtra(NotificationPublisher.NOTIFICATION_ID, nidTT);
+                        notificationIntent.putExtra(NotificationPublisher.NOTIFICATION, notification);
+                        notificationIntent.putExtra(NotificationPublisher.NOTIFICATION_TAG, ddTT.toString());
+                        PendingIntent pendingIntent = PendingIntent.getBroadcast(act, nidTT, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+                        AlarmManager alarmManager = (AlarmManager) act.getSystemService(Context.ALARM_SERVICE);
 
 
-                    //long futureInMillis = dd.getTimeInMillis();
+                        //long futureInMillis = dd.getTimeInMillis();
 
-                    if (notifyTT) {
-                        alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
-                    } else {
-                        alarmManager.cancel(pendingIntent);
+                        if (notifyTT) {
+                            alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
+                        } else {
+                            alarmManager.cancel(pendingIntent);
+                        }
+
+
+                        nTimeNotifier++;
+
                     }
-
-
-                    nTimeNotifier++;
                 }
             }
 
-            private Date getDate(String dateString) {
+            private Date getTurtleDate(String dateString) {
                 SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy HH:mm z");
                 //formatter.setTimeZone(TimeZone.getTimeZone("EDT"));
                 Date value = null;
                 try {
                     value = formatter.parse(dateString);
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                SimpleDateFormat dateFormatter = new SimpleDateFormat("MM/dd/yyyy HH:mm");
-                dateFormatter.setTimeZone(TimeZone.getDefault());
-                String dt = dateFormatter.format(value);
 
-                try {
-                    value = dateFormatter.parse(dt);
+                    SimpleDateFormat dateFormatter = new SimpleDateFormat("MM/dd/yyyy HH:mm");
+                    dateFormatter.setTimeZone(TimeZone.getDefault());
+                    String dt = dateFormatter.format(value);
+
+                    try {
+                        value = dateFormatter.parse(dt);
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }

@@ -1,10 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/chharItemView"
+        android:layout_marginBottom="5dp"
+        card_view:cardCornerRadius="4dp">
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="vertical" android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="5dp">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/charProfLayout">
+
+                <ImageView
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:id="@+id/charProfile"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/charID"
+                    android:layout_alignRight="@id/charProfile"
+                    android:layout_alignBottom="@id/charProfile"
+                    android:layout_margin="1dp"
+                    android:text="-"
+                    android:textColor="#ffffff"
+                    android:gravity="center_horizontal|bottom"
+                    android:background="#a26d6c6c"
+                    android:textSize="13dp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Medium Text"
+                android:id="@+id/charName"
+                android:layout_alignTop="@+id/charProfLayout"
+                android:layout_toRightOf="@+id/charProfLayout"
+                android:layout_toEndOf="@id/charProfLayout"
+                android:layout_marginLeft="33dp"
+                android:layout_marginStart="33dp"
+                android:textSize="12dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Small Text"
+                android:id="@+id/charClass"
+                android:layout_below="@+id/charName"
+                android:layout_alignLeft="@+id/charName"
+                android:layout_alignStart="@+id/charName"
+                android:layout_marginTop="5dp"
+                android:textSize="10dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:id="@+id/charHealth"
+                android:textSize="10dp"
+                android:layout_alignLeft="@+id/charClass"
+                android:layout_alignStart="@+id/charClass"
+                android:layout_marginTop="5dp"
+                android:layout_below="@+id/charClass" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:id="@+id/charAttack"
+                android:textSize="10dp"
+                android:layout_alignTop="@+id/charHealth"
+                android:layout_centerHorizontal="true"
+                android:layout_toRightOf="@+id/charHealth"
+                android:layout_marginLeft="12dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:id="@+id/charRecovery"
+                android:textSize="10dp"
+                android:layout_alignLeft="@+id/charHealth"
+                android:layout_alignStart="@+id/charStars"
+                android:layout_marginTop="5dp"
+                android:layout_below="@+id/charHealth" />
+
+            <RatingBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/charStars"
+                android:clickable="false"
+                android:minHeight="14dp"
+                android:maxHeight="14dp"
+                android:numStars="6"
+                android:layout_marginLeft="5dp"
+                android:layout_alignTop="@+id/charClass"
+                android:layout_toRightOf="@+id/charClass"
+                style="@android:style/Widget.DeviceDefault.RatingBar.Small" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:id="@+id/charCost"
+                android:textSize="10dp"
+                android:layout_alignTop="@+id/charRecovery"
+                android:layout_toRightOf="@+id/charRecovery"
+                android:layout_marginLeft="5dp" />
+
+        </RelativeLayout>
+        </android.support.v7.widget.CardView>
+</LinearLayout>
+<!--
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="5dp">
-<!--    android:background="@drawable/abc_list_selector_background_transition_holo_light">-->
-
     <ImageView
         android:layout_width="75dp"
         android:layout_height="75dp"
@@ -85,14 +214,14 @@
         android:layout_toRightOf="@+id/charClass"
         style="@android:style/Widget.DeviceDefault.RatingBar.Small" />
 
-    <!--    <ImageView
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:id="@+id/charType"
-        android:layout_alignTop="@+id/charName"
-        android:layout_toRightOf="@+id/charName"
-        android:layout_toEndOf="@+id/charName"
-        android:layout_marginLeft="29dp"
-        android:layout_marginStart="29dp" />-->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/charCost"
+        android:textSize="10dp"
+        android:layout_alignTop="@+id/charRecovery"
+        android:layout_toRightOf="@+id/charRecovery"
+        android:layout_marginLeft="5dp" />
 
-</RelativeLayout>
+</RelativeLayout>-->

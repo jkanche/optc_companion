@@ -12,4 +12,13 @@
     <string name="banner_ad_unit_id">ca-app-pub-3388461165425874/6973293743</string>
     <string name="char_name">Characters</string>
     <string name="turtle_name">Turtle Times</string>
+    <string name="action_filter">filter</string>
+    <string name="dialog_message">Filter</string>
+    <string name="dialog_title">Filter</string>
+    <string name="title_activity_filter">FilterActivity</string>
+    <string name="ok">ok</string>
+    <string name="cancel">cancel</string>
+    <string name="action_reset">reset</string>
+    <string name="action_sort">sort</string>
+    <string name="action_reverse">reverse list</string>
 </resources>

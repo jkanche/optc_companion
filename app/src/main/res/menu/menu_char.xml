@@ -10,4 +10,41 @@
         app:actionViewClass="android.support.v7.widget.SearchView"
         app:showAsAction="always"/>
 
+    <item android:id="@+id/action_filter"
+        android:title="@string/action_filter"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_filter_list_white_24px"/>
+
+    <item android:id="@+id/action_reset"
+        android:title="@string/action_reset"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_undo_white_24dp"/>
+
+    <item android:id="@+id/action_reverse"
+        android:title="@string/action_reverse"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_swap_vert_white_24dp"/>
+
+    <item
+        android:id="@+id/action_sort"
+        android:title="@string/action_sort"
+        app:showAsAction="ifRoom">
+        <menu>
+            <item
+                android:id="@+id/menuCostSort"
+                android:title="Sort by Cost" />
+            <item
+                android:id="@+id/menuHealthSort"
+                android:title="Sort by Health" />
+            <item
+                android:id="@+id/menuAttackSort"
+                android:title="Sort by Attack" />
+            <item
+                android:id="@+id/menuRcvSort"
+                android:title="Sort by Recovery" />
+            <item
+                android:id="@+id/menucharIDSort"
+                android:title="Sort by Char. ID" />
+        </menu>
+    </item>
 </menu>

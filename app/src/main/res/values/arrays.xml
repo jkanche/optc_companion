@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="classes" >
+        <item>Fighter</item>
+        <item>Shooter</item>
+        <item>Slasher</item>
+        <item>Striker</item>
+        <item>Freedom</item>
+        <item>Knowledge</item>
+        <item>Tough</item>
+    </string-array>
+    <string-array name="types" >
+        <item>STR</item>
+        <item>QCK</item>
+        <item>DEX</item>
+        <item>PSY</item>
+        <item>INT</item>
+    </string-array>
+</resources>

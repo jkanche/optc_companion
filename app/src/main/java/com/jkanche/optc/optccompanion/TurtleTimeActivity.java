@@ -49,6 +49,10 @@ public class TurtleTimeActivity extends AppCompatActivity {
         Intent intent = getIntent();
         response = intent.getExtras().getString("turtleTimeResp");
 
+        if(response == null) {
+            response = "-";
+        }
+
         mRecyclerView = (RecyclerView) findViewById(R.id.turtleTimeView);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         //mAdapter = new CharAdapter(this, optcchars);
