@@ -10439,5 +10439,31 @@
       19,
       7
     ]
+  },
+  "782": {
+    "special": "Delays all enemies for 1 turn, recovers a small random amount of HP",
+    "specialName": "Smile of a Natural Beauty",
+    "captain": "Boosts RCV of Slasher characters by 1.5x",
+    "cooldown": [
+      11,
+      11
+    ],
+    "evolution": 783,
+    "evolvers": [
+      117,
+      93,
+      94,
+      304,
+      104
+    ]
+  },
+  "783": {
+    "special": "Delays all enemies for 1 turn, recovers a small random amount of HP",
+    "specialName": "Smile of a Natural Beauty",
+    "captain": "Boosts ATK of Slasher characters by 2x and their RCV by 1.5x",
+    "cooldown": [
+      11,
+      11
+    ]
   }
 }

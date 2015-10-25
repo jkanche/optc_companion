@@ -15,6 +15,7 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.onesignal.OneSignal;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
@@ -27,6 +28,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+
+import com.onesignal.OneSignal;
+import com.onesignal.OneSignal.NotificationOpenedHandler;
 
 /**
  * Created by jayar on 10/13/2015.
@@ -158,5 +162,16 @@ public class TurtleTimeActivity extends AppCompatActivity {
         editor.commit();
 
         return parentObjects;
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        OneSignal.onPaused();
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        OneSignal.onResumed();
     }
 }

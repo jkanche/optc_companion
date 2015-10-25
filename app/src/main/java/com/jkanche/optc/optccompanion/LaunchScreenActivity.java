@@ -4,6 +4,7 @@ package com.jkanche.optc.optccompanion;
  * Created by jayar on 10/12/2015.
  */
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -11,10 +12,12 @@ import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -32,6 +35,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import com.onesignal.OneSignal;
+import com.onesignal.OneSignal.NotificationOpenedHandler;
 
 public class LaunchScreenActivity extends AppCompatActivity {
 
@@ -46,12 +51,23 @@ public class LaunchScreenActivity extends AppCompatActivity {
     public TextView updateTask;
     String response;
     String forceDataReload;
+    private static Activity currentActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.splash);
+
+        currentActivity = this;
+
+        updateTask = (TextView) findViewById(R.id.updateTask);
+
+        //updateTask.setText("Registering device to enable push notifications...");
+
+        OneSignal.init(this, "608989796731", "78f67f94-7782-11e5-a19e-6f60af95ff5c", new ExampleNotificationOpenedHandler());
+
+        Toast.makeText(this, "device registered for push notifications", Toast.LENGTH_LONG ).show();
 
         forceDataReload = getIntent().getStringExtra("forceReload");
 
@@ -63,13 +79,50 @@ public class LaunchScreenActivity extends AppCompatActivity {
 
         mProgressBar = (ProgressBar) findViewById (R.id.progressBar);
 
-        updateTask = (TextView) findViewById(R.id.updateTask);
+        //updateTask = (TextView) findViewById(R.id.updateTask);
 
         AdView mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
 
         new TurtleBackgroundTask().execute("https://sheetsu.com/apis/78c5b290");
+    }
+
+    private class ExampleNotificationOpenedHandler implements OneSignal.NotificationOpenedHandler {
+        /**
+         * Callback to implement in your app to handle when a notification is opened from the Android status bar or
+         * a new one comes in while the app is running.
+         * This method is located in this activity as an example, you may have any class you wish implement NotificationOpenedHandler and define this method.
+         *
+         * @param message        The message string the user seen/should see in the Android status bar.
+         * @param additionalData The additionalData key value pair section you entered in on onesignal.com.
+         * @param isActive       Was the app in the foreground when the notification was received.
+         */
+        @Override
+        public void notificationOpened(String message, JSONObject additionalData, boolean isActive) {
+            String messageTitle = "OneSignal Example", messageBody = message;
+
+            try {
+                if (additionalData != null) {
+                    if (additionalData.has("title"))
+                        messageTitle = additionalData.getString("title");
+                    if (additionalData.has("actionSelected"))
+                        messageBody += "\nPressed ButtonID: " + additionalData.getString("actionSelected");
+
+                    messageBody = message + "\n\nFull additionalData:\n" + additionalData.toString();
+                }
+            } catch (JSONException e) {
+            }
+
+/*            new AlertDialog.Builder(LaunchScreenActivity.currentActivity)
+                    .setTitle(messageTitle)
+                    .setMessage(messageBody)
+                    .setCancelable(true)
+                    .setPositiveButton("OK", null)
+                    .create().show();*/
+
+            new TurtleBackgroundTask().execute("https://sheetsu.com/apis/78c5b290");
+        }
     }
 
     private class TurtleBackgroundTask extends AsyncTask {
@@ -344,7 +397,18 @@ public class LaunchScreenActivity extends AppCompatActivity {
             intent.putExtra("turtleTimeResp", response);
 
             startActivity(intent);
-            finish();
+            //finish();
         }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        OneSignal.onPaused();
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        OneSignal.onResumed();
     }
 }

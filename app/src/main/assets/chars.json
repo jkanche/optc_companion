@@ -19011,5 +19011,55 @@
       "rcv": 1.5
     },
     "number": 780
+  },
+  {
+    "name": "Tashigi, Justice's Flower",
+    "type": "INT",
+    "class": [
+      "Slasher",
+      "Knowledge"],
+    "stars": 4,
+    "cost": 13,
+    "combo": 5,
+    "slots": 2,
+    "maxLevel": 50,
+    "maxEXP": 0,
+    "minHP": 132,
+    "minATK": 65,
+    "minRCV": 49,
+    "maxHP": 999,
+    "maxATK": 495,
+    "maxRCV": 205,
+    "growth": {
+      "hp": 0,
+      "atk": 0,
+      "rcv": 0
+    },
+    "number": 781
+  },
+  {
+    "name": "Navy Headquarters Ensign Tashigi, Justice's Flower",
+    "type": "INT",
+    "class": [
+      "Slasher",
+      "Knowledge"],
+    "stars": 5,
+    "cost": 20,
+    "combo": 5,
+    "slots": 3,
+    "maxLevel": 99,
+    "maxEXP": 0,
+    "minHP": 932,
+    "minATK": 428,
+    "minRCV": 164,
+    "maxHP": 1804,
+    "maxATK": 890,
+    "maxRCV": 378,
+    "growth": {
+      "hp": 0,
+      "atk": 0,
+      "rcv": 0
+    },
+    "number": 782
   }
 ]

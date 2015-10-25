@@ -1,5 +1,6 @@
 package com.jkanche.optc.optccompanion;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -13,6 +14,7 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.onesignal.OneSignal;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -32,12 +34,15 @@ public class HomeScreenActivity extends AppCompatActivity {
     public ArrayList<optcCharEvol> optcevols = new ArrayList<optcCharEvol>();
     public String respo;
     public static final String PREFS_NAME = "optcChars";
+    private static Activity currentActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.homescreen);
+
+        currentActivity = this;
 
         Intent intent = getIntent();
 
@@ -99,5 +104,16 @@ public class HomeScreenActivity extends AppCompatActivity {
         mAdView.loadAd(adRequest);
 
 
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        OneSignal.onPaused();
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        OneSignal.onResumed();
     }
 }

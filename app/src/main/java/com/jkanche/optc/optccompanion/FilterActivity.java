@@ -16,6 +16,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.onesignal.OneSignal;
+
 import org.florescu.android.rangeseekbar.RangeSeekBar;
 
 import java.util.ArrayList;
@@ -320,6 +322,17 @@ public class FilterActivity extends AppCompatActivity {
 
 
 /*        */
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        OneSignal.onPaused();
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        OneSignal.onResumed();
     }
 
 }

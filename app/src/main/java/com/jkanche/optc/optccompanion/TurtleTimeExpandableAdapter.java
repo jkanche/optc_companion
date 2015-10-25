@@ -25,6 +25,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
+import com.onesignal.OneSignal;
+import com.onesignal.OneSignal.NotificationOpenedHandler;
 
 /**
  * Created by jayar on 10/13/2015.
@@ -87,6 +89,7 @@ public class TurtleTimeExpandableAdapter extends ExpandableRecyclerAdapter<Turtl
 
     @Override
     public void onBindChildViewHolder(TurtleTimeChildViewHolder turtleTimeChildViewHolder, int i, Object childObject) {
+
         final TurtleLocationTimes tlocTime = (TurtleLocationTimes) childObject;
         turtleTimeChildViewHolder.turtleDigit.setText(tlocTime.getDigitID());
 
@@ -115,7 +118,6 @@ public class TurtleTimeExpandableAdapter extends ExpandableRecyclerAdapter<Turtl
             }
         }
 
-
         turtleTimeChildViewHolder.turtleTime.setText(dateFinal);
         turtleTimeChildViewHolder.turtleNotify.setChecked(tlocTime.isNotifySwitch());
 
@@ -123,6 +125,29 @@ public class TurtleTimeExpandableAdapter extends ExpandableRecyclerAdapter<Turtl
 
             @Override
             public void onClick(View v) {
+
+/*                Gson gson = new Gson();
+                Type collectionType = new TypeToken<ArrayList<TurtleLocationTimes>>() {}.getType();
+
+                SharedPreferences optcTT = mInflater.getContext().getSharedPreferences(PREFS_NAME_Turtle, 0);
+                ArrayList<TurtleLocationTimes> globalChildList = new ArrayList<TurtleLocationTimes>();
+
+                globalChildList = gson.fromJson(dataTTGlobal, collectionType);
+
+                if(tlocTime.isNotifySwitch()) {
+                    // notify turned to false
+
+                    OneSignal.deleteTag(tlocTime.getLocation() + "-" + tlocTime.getDigitID());
+                }
+                else {
+                    // turned back to notify
+
+                    OneSignal.sendTag(tlocTime.getLocation() + "-" + tlocTime.getDigitID(), "1");
+                }*/
+
+
+                tlocTime.toggleNotifySwitch();
+
 
                 Gson gson = new Gson();
                 Type collectionType = new TypeToken<ArrayList<TurtleLocationTimes>>() {
@@ -141,7 +166,13 @@ public class TurtleTimeExpandableAdapter extends ExpandableRecyclerAdapter<Turtl
 
                         if (temp.getDigitID().equals(tlocTime.getDigitID())) {
                             ((TurtleLocationTimes) globalChildList.get(gi)).toggleNotifySwitch();
-                            scheduleNotification(getNotification("TURTLE TIME - GLOBAL - " + tlocTime.getDigitID()), tlocTime.getDigitID(), tlocTime.getTurtleTime(), !tlocTime.isNotifySwitch(), tlocTime.getLocation());
+                            if(globalChildList.get(gi).isNotifySwitch()) {
+                                OneSignal.sendTag("Global-" + tlocTime.getDigitID(), "1");
+                            }
+                            else {
+                                OneSignal.deleteTag("Global-" + tlocTime.getDigitID());
+                            }
+                            //scheduleNotification(getNotification("TURTLE TIME - GLOBAL - " + tlocTime.getDigitID()), tlocTime.getDigitID(), tlocTime.getTurtleTime(), !tlocTime.isNotifySwitch(), tlocTime.getLocation());
                         }
                     }
 
@@ -160,7 +191,13 @@ public class TurtleTimeExpandableAdapter extends ExpandableRecyclerAdapter<Turtl
 
                         if (temp.getDigitID().equals(tlocTime.getDigitID())) {
                             ((TurtleLocationTimes) japanChildList.get(gi)).toggleNotifySwitch();
-                            scheduleNotification(getNotification("TURTLE TIME - JAPAN - " + tlocTime.getDigitID()), tlocTime.getDigitID(), tlocTime.getTurtleTime(), !tlocTime.isNotifySwitch(), tlocTime.getLocation());
+                            if(japanChildList.get(gi).isNotifySwitch()) {
+                                OneSignal.sendTag("Japan-" + tlocTime.getDigitID(), "1");
+                            }
+                            else {
+                                OneSignal.deleteTag("Japan-" + tlocTime.getDigitID());
+                            }
+                            //scheduleNotification(getNotification("TURTLE TIME - JAPAN - " + tlocTime.getDigitID()), tlocTime.getDigitID(), tlocTime.getTurtleTime(), !tlocTime.isNotifySwitch(), tlocTime.getLocation());
                         }
                     }
 

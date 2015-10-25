@@ -35,6 +35,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Please reload data after every update."
+            android:id="@+id/textView11"
+            android:textSize="10dp"
+            android:textStyle="bold|italic" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="This is the only place you will see an ad."
             android:id="@+id/textView2"
