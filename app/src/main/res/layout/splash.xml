@@ -41,7 +41,7 @@
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp" />
 
-    <com.google.android.gms.ads.AdView
+<!--    <com.google.android.gms.ads.AdView
         android:id="@+id/adView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -49,5 +49,5 @@
         android:layout_alignParentBottom="true"
         ads:adSize="BANNER"
         ads:adUnitId="@string/banner_ad_unit_id">
-    </com.google.android.gms.ads.AdView>
+    </com.google.android.gms.ads.AdView>-->
 </LinearLayout>

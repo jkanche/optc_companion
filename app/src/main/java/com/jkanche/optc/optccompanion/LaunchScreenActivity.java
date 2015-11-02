@@ -16,9 +16,12 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.flurry.android.FlurryAgent;
+import com.flurry.android.ads.FlurryAdBanner;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.gson.Gson;
@@ -53,6 +56,10 @@ public class LaunchScreenActivity extends AppCompatActivity {
     String forceDataReload;
     private static Activity currentActivity;
 
+    private RelativeLayout mBanner;
+    private FlurryAdBanner mFlurryAdBanner = null;
+    private String mAdSpaceName = "optc";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,11 +88,28 @@ public class LaunchScreenActivity extends AppCompatActivity {
 
         //updateTask = (TextView) findViewById(R.id.updateTask);
 
-        AdView mAdView = (AdView) findViewById(R.id.adView);
+/*        AdView mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
+        mAdView.loadAd(adRequest);*/
+
+        mBanner = (RelativeLayout)findViewById(R.id.relativebanner);
+
+        mFlurryAdBanner = new FlurryAdBanner(this, mBanner, mAdSpaceName);
 
         new TurtleBackgroundTask().execute("https://sheetsu.com/apis/78c5b290");
+    }
+
+    public void onStart() {
+        super.onStart();
+        FlurryAgent.onStartSession(this);
+        // fetch and display ad for this ad space as soon as it is ready.
+        mFlurryAdBanner.fetchAndDisplayAd();
+    }
+
+    public void onStop() {
+        super.onStop();
+        FlurryAgent.onEndSession(this);
+        mFlurryAdBanner.destroy();
     }
 
     private class ExampleNotificationOpenedHandler implements OneSignal.NotificationOpenedHandler {

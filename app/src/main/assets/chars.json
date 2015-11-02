@@ -18874,7 +18874,7 @@
     "combo": 6,
     "slots": 2,
     "maxLevel": 35,
-    "maxEXP": 0,
+    "maxEXP": 136167,
     "minHP": 303,
     "minATK": 169,
     "minRCV": 30,
@@ -18900,7 +18900,7 @@
     "combo": 5,
     "slots": 3,
     "maxLevel": 701,
-    "maxEXP": 0,
+    "maxEXP": 1778330,
     "minHP": 842,
     "minATK": 412,
     "minRCV": 70,
@@ -18923,7 +18923,7 @@
     "combo": 5,
     "slots": 1,
     "maxLevel": 50,
-    "maxEXP": 0,
+    "maxEXP": 392109,
     "minHP": 193,
     "minATK": 111,
     "minRCV": 51,
@@ -18946,7 +18946,7 @@
     "combo": 4,
     "slots": 3,
     "maxLevel": 99,
-    "maxEXP": 0,
+    "maxEXP": 3000000,
     "minHP": 920,
     "minATK": 441,
     "minRCV": 150,
@@ -18972,7 +18972,7 @@
     "combo": 5,
     "slots": 2,
     "maxLevel": 70,
-    "maxEXP": 0,
+    "maxEXP": 1066998,
     "minHP": 702,
     "minATK": 340,
     "minRCV": 38,
@@ -19017,7 +19017,8 @@
     "type": "INT",
     "class": [
       "Slasher",
-      "Knowledge"],
+      "Knowledge"
+    ],
     "stars": 4,
     "cost": 13,
     "combo": 5,
@@ -19042,7 +19043,8 @@
     "type": "INT",
     "class": [
       "Slasher",
-      "Knowledge"],
+      "Knowledge"
+    ],
     "stars": 5,
     "cost": 20,
     "combo": 5,
@@ -19061,5 +19063,311 @@
       "rcv": 0
     },
     "number": 782
+  },
+  {
+    "name": "Gen-san",
+    "type": "STR",
+    "class": [
+      "Slasher",
+      "Knowledge"
+    ],
+    "stars": 3,
+    "cost": 9,
+    "combo": 5,
+    "slots": 2,
+    "maxLevel": 35,
+    "maxEXP": 136167,
+    "minHP": 211,
+    "minATK": 45,
+    "minRCV": 33,
+    "maxHP": 930,
+    "maxATK": 288,
+    "maxRCV": 190,
+    "growth": {
+      "hp": 1,
+      "atk": 1,
+      "rcv": 1
+    },
+    "number": 783
+  },
+  {
+    "name": "Genzo, Cocoyasi Village Resident",
+    "type": "STR",
+    "class": [
+      "Slasher",
+      "Knowledge"
+    ],
+    "stars": 4,
+    "cost": 15,
+    "combo": 4,
+    "slots": 3,
+    "maxLevel": 70,
+    "maxEXP": 1066998,
+    "minHP": 879,
+    "minATK": 242,
+    "minRCV": 143,
+    "maxHP": 1324,
+    "maxATK": 501,
+    "maxRCV": 299,
+    "growth": {
+      "hp": 1,
+      "atk": 1,
+      "rcv": 1
+    },
+    "number": 784
+  },
+  {
+    "name": "Dr. Hiluluk",
+    "type": "PSY",
+    "class": [
+      "Shooter",
+      "Freedom"
+    ],
+    "stars": 3,
+    "cost": 9,
+    "combo": 6,
+    "slots": 2,
+    "maxLevel": 35,
+    "maxEXP": 136167,
+    "minHP": 231,
+    "minATK": 63,
+    "minRCV": 5,
+    "maxHP": 1248,
+    "maxATK": 461,
+    "maxRCV": 84,
+    "growth": {
+      "hp": 1,
+      "atk": 1,
+      "rcv": 1
+    },
+    "number": 785
+  },
+  {
+    "name": "Dr. Hiluluk, Quack Doctor",
+    "type": "PSY",
+    "class": [
+      "Shooter",
+      "Freedom"
+    ],
+    "stars": 4,
+    "cost": 15,
+    "combo": 5,
+    "slots": 3,
+    "maxLevel": 70,
+    "maxEXP": 1066998,
+    "minHP": 1233,
+    "minATK": 451,
+    "minRCV": 84,
+    "maxHP": 1248,
+    "maxATK": 518,
+    "maxRCV": 312,
+    "growth": {
+      "hp": 1,
+      "atk": 1,
+      "rcv": 1
+    },
+    "number": 786
+  },
+  {
+    "name": "Kuina",
+    "type": "DEX",
+    "class": "Striker",
+    "stars": 3,
+    "cost": 9,
+    "combo": 6,
+    "slots": 2,
+    "maxLevel": 35,
+    "maxEXP": 136167,
+    "minHP": 54,
+    "minATK": 41,
+    "minRCV": 70,
+    "maxHP": 503,
+    "maxATK": 264,
+    "maxRCV": 251,
+    "growth": {
+      "hp": 1,
+      "atk": 1,
+      "rcv": 1
+    },
+    "number": 787
+  },
+  {
+    "name": "Kuina, Shimotsuki Village's Girl Swordsman",
+    "type": "DEX",
+    "class": "Slasher",
+    "stars": 4,
+    "cost": 15,
+    "combo": 5,
+    "slots": 3,
+    "maxLevel": 70,
+    "maxEXP": 1066998,
+    "minHP": 448,
+    "minATK": 220,
+    "minRCV": 213,
+    "maxHP": 917,
+    "maxATK": 582,
+    "maxRCV": 338,
+    "growth": {
+      "hp": 1,
+      "atk": 1,
+      "rcv": 1
+    },
+    "number": 788
+  },
+  {
+    "name": "Tamanegi, Piiman & Ninjin",
+    "type": "QCK",
+    "class": [
+      "Striker",
+      "Freedom"
+    ],
+    "stars": 3,
+    "cost": 9,
+    "combo": 4,
+    "slots": 3,
+    "maxLevel": 35,
+    "maxEXP": 136167,
+    "minHP": 80,
+    "minATK": 10,
+    "minRCV": 66,
+    "maxHP": 716,
+    "maxATK": 142,
+    "maxRCV": 249,
+    "growth": {
+      "hp": 1,
+      "atk": 1,
+      "rcv": 1
+    },
+    "number": 789
+  },
+  {
+    "name": "Tamanegi, Piiman & Ninjin, the Usopp Pirates",
+    "type": "QCK",
+    "class": [
+      "Striker",
+      "Freedom"
+    ],
+    "stars": 4,
+    "cost": 15,
+    "combo": 6,
+    "slots": 3,
+    "maxLevel": 70,
+    "maxEXP": 1066998,
+    "minHP": 654,
+    "minATK": 77,
+    "minRCV": 180,
+    "maxHP": 1200,
+    "maxATK": 333,
+    "maxRCV": 350,
+    "growth": {
+      "hp": 0,
+      "atk": 0,
+      "rcv": 0
+    },
+    "number": 790
+  },
+  {
+    "name": "Iceburg",
+    "type": "INT",
+    "class": [
+      "Shooter",
+      "Knowledge"
+    ],
+    "stars": 3,
+    "cost": 9,
+    "combo": 6,
+    "slots": 2,
+    "maxLevel": 35,
+    "maxEXP": 136167,
+    "minHP": 155,
+    "minATK": 69,
+    "minRCV": 38,
+    "maxHP": 790,
+    "maxATK": 392,
+    "maxRCV": 167,
+    "growth": {
+      "hp": 1,
+      "atk": 1,
+      "rcv": 1
+    },
+    "number": 791
+  },
+  {
+    "name": "Iceburg, Mayor of W7 and President of Galley-La Company",
+    "type": "INT",
+    "class": [
+      "Shooter",
+      "Knowledge"
+    ],
+    "stars": 4,
+    "cost": 16,
+    "combo": 4,
+    "slots": 3,
+    "maxLevel": 70,
+    "maxEXP": 1066998,
+    "minHP": 723,
+    "minATK": 343,
+    "minRCV": 122,
+    "maxHP": 1401,
+    "maxATK": 702,
+    "maxRCV": 224,
+    "growth": {
+      "hp": 1,
+      "atk": 1,
+      "rcv": 1
+    },
+    "number": 792
+  },
+  {
+    "name": "Monkey D. Luffy Rising Star",
+    "type": "INT",
+    "class": [
+      "Slasher",
+      "Tough"
+    ],
+    "stars": 4,
+    "cost": 30,
+    "combo": 4,
+    "slots": 1,
+    "maxLevel": 70,
+    "maxEXP": 1066998,
+    "minHP": 259,
+    "minATK": 179,
+    "minRCV": 0,
+    "maxHP": 1400,
+    "maxATK": 763,
+    "maxRCV": 0,
+    "growth": {
+      "hp": 1.5,
+      "atk": 1.5,
+      "rcv": 1.5
+    },
+    "number": 793
+  },
+  {
+    "name": "Nightmare Luffy Warrior of Hope",
+    "type": "INT",
+    "class": [
+      "Fighter",
+      "Tough"
+    ],
+    "stars": 5,
+    "cost": 50,
+    "combo": 4,
+    "slots": 2,
+    "maxLevel": 99,
+    "maxEXP": 5000000,
+    "minHP": 1331,
+    "minATK": 711,
+    "minRCV": 0,
+    "maxHP": 3020,
+    "maxATK": 1520,
+    "maxRCV": 0,
+    "growth": {
+      "hp": 1.5,
+      "atk": 1.5,
+      "rcv": 1.5
+    },
+    "number": 794
   }
 ]

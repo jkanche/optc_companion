@@ -10465,5 +10465,120 @@
       11,
       11
     ]
+  },
+  "784": {
+    "special": "Reduces Silence duration by 2 turns, removes blindness",
+    "specialName": "Yelling at Lascivious Young Women",
+    "cooldown": 15,
+    "evolution": 785,
+    "evolvers": [
+      116,
+      89,
+      95
+    ]
+  },
+  "785": {
+    "special": "Reduces Silence duration by 2 turns, removes blindness",
+    "specialName": "Yelling at Lascivious Young Women",
+    "captain": "Reduces damage received by 20%",
+    "cooldown": 15
+  },
+  "786": {
+    "special": "Seals himself for 10 turns, delay all enemies for 1 turn, reduces damage received by 50% for 4 turns",
+    "specialName": "The Resolve to Face Death! \"Open Mind\"",
+    "cooldown": 23,
+    "evolution": 787,
+    "evolvers": [
+      116,
+      81,
+      87
+    ]
+  },
+  "787": {
+    "special": "Seals himself for 10 turns, delay all enemies for 1 turn, reduces damage received by 50% for 4 turns",
+    "specialName": "The Resolve to Face Death! \"Open Mind\"",
+    "captain": "Reduces damage received by 50%, reduces crew's current HP by 10% at the end of each turn",
+    "cooldown": 23
+  },
+  "788": {
+    "special": "Following the activation of the special, if every unit scores a Perfect hit, boosts ATK of Slasher characters by 1.75x in the following turn",
+    "specialName": "Real Sword Fight with a Girl Swordsman",
+    "cooldown": 15,
+    "evolution": 789,
+    "evolvers": [
+      116,
+      80,
+      86
+    ]
+  },
+  "789": {
+    "special": "Following the activation of the special, if every unit scores a Perfect hit, boosts ATK of Slasher characters by 1.75x in the following turn",
+    "specialName": "Real Sword Fight with a Girl Swordsman",
+    "captain": "Boosts ATK of Slasher characters by 1.5x",
+    "cooldown": 15
+  },
+  "790": {
+    "special": "Deals 3x character's ATK in QCK damage to one enemy, boosts ATK of STR, DEX and QCK characters by 1.2x for 3 turns",
+    "specialName": "March!! Usopp Pirates",
+    "cooldown": 17,
+    "evolution": 791,
+    "evolvers": [
+      89,
+      90,
+      91
+    ]
+  },
+  "791": {
+    "special": "Deals 3x character's ATK in QCK damage to one enemy, boosts ATK of STR, DEX and QCK characters by 1.2x for 3 turns",
+    "specialName": "March!! Usopp Pirates",
+    "captain": "Boosts ATK, HP and RCV of STR, DEX and QCK characters by 1.25x",
+    "cooldown": 17
+  },
+  "792": {
+    "special": "Changes all orbs into either [STR], [QCK], [DEX], [PSY] or [INT] orbs, freely switch orbs between slots twice, locks all orbs for 1 turn",
+    "specialName": "The Entushiasm to Keep Skilled Workers in Line",
+    "cooldown": 22,
+    "evolution": 793,
+    "evolvers": [
+      116,
+      117,
+      99
+    ]
+  },
+  "793": {
+    "special": "Changes all orbs into either [STR], [QCK], [DEX], [PSY] or [INT] orbs, freely switch orbs between slots twice, locks all orbs for 1 turn",
+    "specialName": "The Entushiasm to Keep Skilled Workers in Line",
+    "captain": "Boosts ATK and RCV of Knowledge characters by 1.5x",
+    "cooldown": 22
+  },
+  "794": {
+    "special": "Deals 10 hits of random INT damage to random enemies, delays all enemies for 1 turn",
+    "specialNotes": "The target of each of the 10 hits is chosen randomly.",
+    "specialName": "Gum-Gum Storm",
+    "captain": "Boosts ATK of Tough characters by 3x, reduces crew's current HP by 10% at the end of each turn, reduces his own ATK multiplier by 0.1x at the end of each turn",
+    "captainNotes": "His ATK multiplier will be 3.5x on the first turn, 3.4x on the second, 3.3x on the third and so on. The reduction stops once the multiplier is 1.0x. The multiplier affects all Tough units.",
+    "cooldown": [
+      30,
+      16
+    ],
+    "evolution": 795,
+    "evolvers": [
+      118,
+      88,
+      266,
+      304,
+      104
+    ]
+  },
+  "795": {
+    "special": "Deals 10 hits of random INT damage to random enemies, delays all enemies for 1 turn",
+    "specialNotes": "The target of each of the 10 hits is chosen randomly.",
+    "specialName": "Gum-Gum Storm",
+    "captain": "Boosts ATK of Tough characters by 3.5x, reduces crew's current HP by 10% at the end of each turn, reduces his own ATK multiplier by 0.1x at the end of each turn",
+    "captainNotes": "His ATK multiplier will be 3.5x on the first turn, 3.4x on the second, 3.3x on the third and so on. The reduction stops once the multiplier is 1.0x. The multiplier affects all Tough units.",
+    "cooldown": [
+      30,
+      16
+    ]
   }
 }

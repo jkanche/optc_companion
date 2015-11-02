@@ -2,6 +2,7 @@ package com.jkanche.optc.optccompanion;
 
 import android.app.Application;
 
+import com.flurry.android.FlurryAgent;
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.Tracker;
 
@@ -37,6 +38,9 @@ public class OPTCCompanion extends Application {
         //this will be called each time you open the application
         super.onCreate();
         run = 0;
+
+        FlurryAgent.setLogEnabled(false);
+        FlurryAgent.init(this, "C6QWQQBDGRMJCP8YYRC3");
         //processJson();
     }
 

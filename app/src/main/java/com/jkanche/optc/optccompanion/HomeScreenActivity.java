@@ -9,7 +9,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 
+import com.flurry.android.FlurryAgent;
+import com.flurry.android.ads.FlurryAdBanner;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.gson.Gson;
@@ -35,6 +38,10 @@ public class HomeScreenActivity extends AppCompatActivity {
     public String respo;
     public static final String PREFS_NAME = "optcChars";
     private static Activity currentActivity;
+
+    private RelativeLayout mBanner;
+    private FlurryAdBanner mFlurryAdBanner = null;
+    private String mAdSpaceName = "optc";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,11 +106,29 @@ public class HomeScreenActivity extends AppCompatActivity {
             }
         });
 
-        AdView mAdView = (AdView) findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
+        //AdView mAdView = (AdView) findViewById(R.id.adView);
+        //AdRequest adRequest = new AdRequest.Builder().build();
+        //mAdView.loadAd(adRequest);
 
+        mBanner = (RelativeLayout)findViewById(R.id.relativebanner);
 
+        mFlurryAdBanner = new FlurryAdBanner(this, mBanner, mAdSpaceName);
+
+        //mFlurryAdBanner.fetchAndDisplayAd();
+
+    }
+
+    public void onStart() {
+        super.onStart();
+        FlurryAgent.onStartSession(this);
+        // fetch and display ad for this ad space as soon as it is ready.
+        mFlurryAdBanner.fetchAndDisplayAd();
+    }
+
+    public void onStop() {
+        super.onStop();
+        FlurryAgent.onEndSession(this);
+        mFlurryAdBanner.destroy();
     }
 
     @Override

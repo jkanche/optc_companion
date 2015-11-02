@@ -16,6 +16,7 @@ import android.widget.RatingBar;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.flurry.android.FlurryAgent;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.google.gson.Gson;
@@ -27,6 +28,8 @@ import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
 import java.io.InputStream;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class CharDetailActivity extends AppCompatActivity {
 
@@ -94,6 +97,12 @@ public class CharDetailActivity extends AppCompatActivity {
         //Log.i(TAG, "Setting screen name: " + name);
         mTracker.setScreenName("CharacterDetail~" + charName);
         mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+
+        Map<String, String> charParams = new HashMap<String, String>();
+
+        charParams.put("Character_Name", charName);
+
+        FlurryAgent.logEvent("CharacterDetail", charParams);
 
         TextView tcharName = (TextView) findViewById(R.id.charName);
         tcharName.setText(charName);
