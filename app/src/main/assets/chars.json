@@ -19369,5 +19369,282 @@
       "rcv": 1.5
     },
     "number": 794
+  },
+  {
+    "name": "Breed",
+    "type": "INT",
+    "class": "Knowledge",
+    "stars": 3,
+    "cost": 13,
+    "combo": 6,
+    "slots": 1,
+    "maxLevel": 50,
+    "maxEXP": 392109,
+    "minHP": 59,
+    "minATK": 25,
+    "minRCV": 59,
+    "maxHP": 867,
+    "maxATK": 418,
+    "maxRCV": 275,
+    "growth": {
+      "hp": 1.5,
+      "atk": 1.5,
+      "rcv": 1.5
+    },
+    "number": 795
+  },
+  {
+    "name": "Breed, User of the Peto-Peto Fruit",
+    "type": "INT",
+    "class": [
+      "Knowledge",
+      "Tough"
+    ],
+    "stars": 4,
+    "cost": 20,
+    "combo": 4,
+    "slots": 3,
+    "maxLevel": 99,
+    "maxEXP": 3000000,
+    "minHP": 867,
+    "minATK": 818,
+    "minRCV": 200,
+    "maxHP": 2002,
+    "maxATK": 1311,
+    "maxRCV": 180,
+    "growth": {
+      "hp": 0,
+      "atk": 0,
+      "rcv": 0
+    },
+    "number": 796
+  },
+  {
+    "name": "Kung Fu Dugong, Sea Animal Pirates",
+    "type": "PSY",
+    "class": [
+      "Fighter",
+      "Tough"
+    ],
+    "stars": 4,
+    "cost": 18,
+    "combo": 5,
+    "slots": 2,
+    "maxLevel": 70,
+    "maxEXP": 1778330,
+    "minHP": 50,
+    "minATK": 355,
+    "minRCV": 95,
+    "maxHP": 450,
+    "maxATK": 1115,
+    "maxRCV": 225,
+    "growth": {
+      "hp": 1.5,
+      "atk": 1.5,
+      "rcv": 1.5
+    },
+    "number": 797
+  },
+  {
+    "name": "Sea Lapin, Sea Animal Pirates",
+    "type": "QCK",
+    "class": [
+      "Fighter",
+      "Tough"
+    ],
+    "stars": 3,
+    "cost": 15,
+    "combo": 4,
+    "slots": 1,
+    "maxLevel": 70,
+    "maxEXP": 711332,
+    "minHP": 209,
+    "minATK": 76,
+    "minRCV": 14,
+    "maxHP": 1757,
+    "maxATK": 724,
+    "maxRCV": 112,
+    "growth": {
+      "hp": 1,
+      "atk": 1,
+      "rcv": 1
+    },
+    "number": 798
+  },
+  {
+    "name": "Octopus Boxer, Sea Animal Pirates",
+    "type": "STR",
+    "class": [
+      "Fighter",
+      "Tough"
+    ],
+    "stars": 3,
+    "cost": 15,
+    "combo": 8,
+    "slots": 1,
+    "maxLevel": 70,
+    "maxEXP": 711332,
+    "minHP": 99,
+    "minATK": 91,
+    "minRCV": 2,
+    "maxHP": 1563,
+    "maxATK": 846,
+    "maxRCV": 93,
+    "growth": {
+      "hp": 1,
+      "atk": 1,
+      "rcv": 1
+    },
+    "number": 799
+  },
+  {
+    "name": "Mr. 2 Bon Clay Voyage Log: B.W. (Log Bon Clay)",
+    "type": "PSY",
+    "class": [
+      "Fighter",
+      "Freedom"
+    ],
+    "stars": 4,
+    "cost": 13,
+    "combo": 5,
+    "slots": 2,
+    "maxLevel": 50,
+    "maxEXP": 0,
+    "minHP": 467,
+    "minATK": 233,
+    "minRCV": 101,
+    "maxHP": 1033,
+    "maxATK": 513,
+    "maxRCV": 212,
+    "growth": {
+      "hp": 0,
+      "atk": 0,
+      "rcv": 0
+    },
+    "number": 800
+  },
+  {
+    "name": "Mr. 2 Bon Clay Voyage Dream: Okama Way (Log Bon Clay)",
+    "type": "PSY",
+    "class": [
+      "Fighter",
+      "Freedom"
+    ],
+    "stars": 5,
+    "cost": 20,
+    "combo": 4,
+    "slots": 3,
+    "maxLevel": 99,
+    "maxEXP": 0,
+    "minHP": 970,
+    "minATK": 448,
+    "minRCV": 181,
+    "maxHP": 1914,
+    "maxATK": 922,
+    "maxRCV": 362,
+    "growth": {
+      "hp": 1,
+      "atk": 1,
+      "rcv": 1
+    },
+    "number": 801
+  },
+  {
+    "name": "Hina, Navy HQ Captain",
+    "type": "DEX",
+    "class": [
+      "Fighter",
+      "Knowledge"
+    ],
+    "stars": 4,
+    "cost": 18,
+    "combo": 5,
+    "slots": 1,
+    "maxLevel": 50,
+    "maxEXP": 0,
+    "minHP": 188,
+    "minATK": 128,
+    "minRCV": 48,
+    "maxHP": 977,
+    "maxATK": 544,
+    "maxRCV": 191,
+    "growth": {
+      "hp": 1,
+      "atk": 1,
+      "rcv": 1
+    },
+    "number": 802
+  },
+  {
+    "name": "Black Cage Hina, Navy HQ Captain",
+    "type": "DEX",
+    "class": [
+      "Fighter",
+      "Knowledge"
+    ],
+    "stars": 5,
+    "cost": 30,
+    "combo": 5,
+    "slots": 3,
+    "maxLevel": 99,
+    "maxEXP": 0,
+    "minHP": 920,
+    "minATK": 488,
+    "minRCV": 159,
+    "maxHP": 1900,
+    "maxATK": 912,
+    "maxRCV": 357,
+    "growth": {
+      "hp": 1,
+      "atk": 1,
+      "rcv": 1
+    },
+    "number": 803
+  },
+  {
+    "name": "Smoker, Navy HQ Captain",
+    "type": "INT",
+    "class": "Striker",
+    "stars": 4,
+    "cost": 25,
+    "combo": 6,
+    "slots": 2,
+    "maxLevel": 70,
+    "maxEXP": 0,
+    "minHP": 710,
+    "minATK": 310,
+    "minRCV": 44,
+    "maxHP": 1600,
+    "maxATK": 702,
+    "maxRCV": 146,
+    "growth": {
+      "hp": 1.5,
+      "atk": 1.5,
+      "rcv": 1.5
+    },
+    "number": 804
+  },
+  {
+    "name": "Smoker the White Hunter, Navy HQ Captain",
+    "type": "INT",
+    "class": "Striker",
+    "stars": 5,
+    "cost": 40,
+    "combo": 5,
+    "slots": 3,
+    "maxLevel": 99,
+    "maxEXP": 0,
+    "minHP": 1549,
+    "minATK": 640,
+    "minRCV": 112,
+    "maxHP": 2727,
+    "maxATK": 1289,
+    "maxRCV": 234,
+    "growth": {
+      "hp": 1.5,
+      "atk": 1.5,
+      "rcv": 1.5
+    },
+    "number": 805
   }
 ]

@@ -10580,5 +10580,132 @@
       30,
       16
     ]
+  },
+  "796": {
+    "special": "Slightly boosts chances of getting matching orbs for 3 turns, boosts his own ATK by 1.75x for 1 turn",
+    "specialName": "Peto-Peto Fruit, The Greatest Power",
+    "captain": "Boosts ATK of Knowledge characters by 2x",
+    "cooldown": [
+      22,
+      14
+    ],
+    "evolution": 797,
+    "evolvers": [
+      117,
+      82,
+      88,
+      99,
+      104
+    ]
+  },
+  "797": {
+    "special": "Slightly boosts chances of getting matching orbs for 3 turns, boosts his own ATK by 1.75x for 1 turn",
+    "specialName": "Peto-Peto Fruit, The Greatest Power",
+    "captain": "Boosts ATK of Knowledge and Tough characters by 2x",
+    "cooldown": [
+      22,
+      14
+    ]
+  },
+  "798": {
+    "special": "Removes poison, following the activation of the special, if every unit scores a Perfect hit, boosts ATK of Fighter characters by 1.75x in the following turn",
+    "specialName": "Dugong Secret! Fist of the Black Fin",
+    "captain": "Boosts ATK by 2.5x after scoring 3 Perfects in a row",
+    "cooldown": [
+      20,
+      12
+    ]
+  },
+  "799": {
+    "special": "Randomizes all orbs, recovers 9x character's RCV in HP",
+    "specialName": "Sea Animal Healing",
+    "cooldown": [
+      20,
+      12
+    ]
+  },
+  "800": {
+    "special": "Randomly changes all orbs into either [STR], [DEX] or [QCK] orbs",
+    "specialName": "Octopus Tentacle Blow",
+    "cooldown": [
+      27,
+      12
+    ]
+  },
+  "801": {
+    "special": "Randomly changes [STR], [QCK], [DEX], [INT], bomb and hindrance orbs into either [STR], [QCK], [DEX], [PSY] or [INT] orbs, changes [TND] and [RCV] into [PSY] orbs",
+    "specialName": "Clone-Clone Montage",
+    "captain": "Boosts ATK of PSY characters by 2x",
+    "cooldown": 15,
+    "evolution": 802,
+    "evolvers": [
+      87,
+      94,
+      98,
+      103,
+      303
+    ]
+  },
+  "802": {
+    "special": "Randomly changes [STR], [QCK], [DEX], [INT], bomb and hindrance orbs into either [STR], [QCK], [DEX], [PSY] or [INT] orbs, changes [TND] and [RCV] into [PSY] orbs",
+    "specialName": "Clone-Clone Montage",
+    "captain": "Boosts ATK of PSY characters by 2.5x",
+    "cooldown": 15
+  },
+  "803": {
+    "special": "Deals 8 hits of random DEX damage to random enemies, boosts ATK of all characters by 1.1x for 3 turns",
+    "specialNotes": "The target of each of the 8 hits is chosen randomly.",
+    "specialName": "Black Spear Formation: All-Out Attack!",
+    "captain": "Boosts ATK and RCV of DEX characters by 1.2x",
+    "cooldown": [
+      27,
+      17
+    ],
+    "evolution": 804,
+    "evolvers": [
+      117,
+      80,
+      86,
+      302,
+      102
+    ]
+  },
+  "804": {
+    "special": "Deals 8 hits of random DEX damage to random enemies, boosts ATK of all characters by 1.1x for 3 turns",
+    "specialNotes": "The target of each of the 8 hits is chosen randomly.",
+    "specialName": "Black Spear Formation: All-Out Attack!",
+    "captain": "Boosts ATK and RCV of DEX characters by 1.5x, deals 1x character's ATK in DEX damage to all enemies at the end of each turn",
+    "cooldown": [
+      27,
+      17
+    ]
+  },
+  "805": {
+    "special": "Reduces crew's current HP by 20%, deals 10x the amount of HP subtracted in INT damage to one enemy, amplifies the effect of orbs by 1.75x for 1 turn",
+    "specialNotes": "Orb amplification only affects matching and opposite orbs and works both ways: matching orbs will deal 1.75x more damage and opposite orbs will deal 1.75x less damage",
+    "specialName": "White Vine",
+    "captain": "Boosts ATK of Striker characters by 2x",
+    "cooldown": [
+      27,
+      15
+    ],
+    "evolution": 806,
+    "evolvers": [
+      118,
+      83,
+      88,
+      99,
+      304
+    ]
+  },
+  "806": {
+    "special": "Reduces crew's current HP by 20%, deals 10x the amount of HP subtracted in INT damage to one enemy, amplifies the effect of orbs by 1.75x for 1 turn",
+    "specialNotes": "Orb amplification only affects matching and opposite orbs and works both ways: matching orbs will deal 1.75x more damage and opposite orbs will deal 1.75x less damage",
+    "specialName": "White Vine",
+    "captain": "Boosts ATK of Striker characters by 2x, reduces damage received up to 30% if HP is low",
+    "cooldown": [
+      27,
+      15
+    ]
   }
 }
